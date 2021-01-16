@@ -19,10 +19,13 @@ export function Details() {
 
     return (
         <div className="d-flex justify-content-center details-outer-container">
-            <div className="details-inner-container w-100">
-                {details.title ? <div className="item-title"><h3>{details.title}</h3></div> : <></>}
-                {details.description ? <div className="item-description"><p className="primary-text">{details.description}</p></div> : <></>}
-            </div>
+            {
+                details ? 
+                    (<div className="details-inner-container w-100">
+                        {details.title ? <div className="item-title"><h3>{details.title}</h3></div> : <></>}
+                        {details.description ? <div className="item-description"><p className="primary-text">{details.description}</p></div> : <></>}
+                    </div>) : <p>Loading...</p>
+            }
         </div>
     );
 }
