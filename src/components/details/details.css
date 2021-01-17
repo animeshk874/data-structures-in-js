@@ -21,3 +21,8 @@ p.primary-text {
     color: #689FD2;
     text-align: left;
 }
+
+.code-block {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+}
