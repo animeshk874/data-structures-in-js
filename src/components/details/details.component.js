@@ -29,12 +29,12 @@ export function Details() {
         console.error(error);
     });
 
-    function copyCodeBlock(text){
-        copy(text);
-        toast.dark('Copied!', {
-            toastId: customId
-        });
-    }
+    // function copyCodeBlock(text){
+    //     copy(text);
+    //     toast.dark('Copied!', {
+    //         toastId: customId
+    //     });
+    // }
 
     return (
         <div className="d-flex justify-content-center details-outer-container">
