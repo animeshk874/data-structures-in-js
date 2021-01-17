@@ -57,6 +57,7 @@ function createAndUpdateDataStructurefile(){
         // write to the newly created file
         console.log(`Creating boilerplate: ${DATA_STRUCTURES_DIR}/${dataStructureKey}.js`);
         const variableName = process.argv[2].split('-').reduce((accumulator, currentItem) => accumulator + currentItem.charAt(0).toUpperCase() + currentItem.substring(1).toLowerCase());
+        data = data.replace(`title: ''`, `title: '${dataStructureTitle}'`);
         const boilerplateText = `const ${variableName} = ${data};\n\nexport default ${variableName};`;
         fs.writeFile(`${DATA_STRUCTURES_DIR}/${dataStructureKey}.js`, boilerplateText, (err) => {
             if (err) throw err;
