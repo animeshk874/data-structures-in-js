@@ -6,7 +6,7 @@ import {Route, BrowserRouter as Router, Link} from 'react-router-dom';
 export function List() {
     const [list, setList] = useState([]);
 
-    import('../../../data/data-structures').then((data) => {
+    import('../../../data/data-structures.mjs').then((data) => {
         if(data && data.default && data.default.length){
             setList(data.default);
         }

@@ -21,3 +21,9 @@ body {
 *:focus {
   outline-color: #689FD2;
 }
+
+.Toastify__toast {
+  padding: 6px 18px !important;
+  border-radius: 5px !important;
+  opacity: 0.9 !important;
+}
