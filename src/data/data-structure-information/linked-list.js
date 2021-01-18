@@ -1,10 +1,32 @@
 const linkedList = {
     title: 'Linked List',
-    description: 'A linked list is a sequence of data structures, which are connected together via links. Linked List is a sequence of links which contains items. Each link contains a connection to another link',
-    code: `
-var arr = [1,2,3];
-arr.filter((item) => item * 3); // [3, 6, 9]
-    `
-}
+    description: '',
+    operations: [
+        {
+            methodName: 'fooBar(num)',
+            description: '',
+            implementationCode: `function fooBar(num){
+    return Math.floor(num/2);
+}`,
+            parameters: [
+                {
+                    name: 'num',
+                    description: 'Number to be divided by 2'
+                }
+            ],
+            exampleCode: `
+var myNum = 100;
+fooBar(myNum); // 50
+            `,
+            sources: [
+                {
+                    url: 'https://github.com/animeshk874/data-structures-in-js',
+                    label: 'Data Structures in JS' // if not set, then the url will be used as the label
+                }
+            ],
+            otherParameters: []
+        }
+    ]
+};
 
 export default linkedList;

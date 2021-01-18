@@ -35,7 +35,7 @@ fs.readFile(DATA_STRUCTURES_FILE, 'utf8', (err, data) => {
     dataArr.splice(1, 0, `${dataStructureObject}`);
 
     // re-write to the file
-    fs.writeFile(DATA_STRUCTURES_FILE, dataArr.join(''), (err) => {
+    fs.writeFile(DATA_STRUCTURES_FILE, dataArr.join('').replace('[,', '['), (err) => {
         if (err) throw err;
         console.log(`Updating ${DATA_STRUCTURES_FILE}`);
         console.log(`Updated ${DATA_STRUCTURES_FILE}`);
