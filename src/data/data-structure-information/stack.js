@@ -1,7 +1,32 @@
 const stack = {
     title: 'Stack',
-    description: 'Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out).',
-    code: 'var num = 1000;'
+    description: '',
+    operations: [
+        {
+            methodName: 'fooBar(num)',
+            description: '',
+            implementationCode: `function fooBar(num){
+    return Math.floor(num/2);
+}`,
+            parameters: [
+                {
+                    name: 'num',
+                    description: 'Number to be divided by 2'
+                }
+            ],
+            exampleCode: `
+var myNum = 100;
+fooBar(myNum); // 50
+            `,
+            sources: [
+                {
+                    url: 'https://github.com/animeshk874/data-structures-in-js',
+                    label: 'Data Structures in JS' // if not set, then the url will be used as the label
+                }
+            ],
+            otherParameters: []
+        }
+    ]
 };
 
 export default stack;

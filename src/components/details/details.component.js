@@ -29,29 +29,53 @@ export function Details() {
         console.error(error);
     });
 
-    // function copyCodeBlock(text){
-    //     copy(text);
-    //     toast.dark('Copied!', {
-    //         toastId: customId
-    //     });
-    // }
+    function copyCodeBlock(text){
+        copy(text);
+        toast.dark('Copied!', {
+            toastId: customId
+        });
+    }
 
     return (
         <div className="d-flex justify-content-center details-outer-container">
             {
                 details ? 
-                    (<div className="details-inner-container w-100">
-                        {details.title ? <div className="item-title"><h3>{details.title}</h3></div> : <></>}
-                        {details.description ? <div className="item-description"><p className="primary-text">{details.description}</p></div> : <></>}
-                        {
-      <pre>
-        <code className="javascript code-block">{details.code}</code>
-      </pre>
-      }
-      {
-    //   <button onClick={() => copyCodeBlock(details.code)}>Copy</button>
-      }
-                    </div>) : <p>Loading...</p>
+                    (
+                        <div className="details-inner-container w-100">
+                            {<div className="item-title"><h3>{details.title || '-'}</h3></div>}
+                            {details.description && <div className="item-description"><p className="primary-text">{details.description}</p></div>}
+                            {
+                                details.operations && details.operations.length ? 
+                                <div className="method-container">
+                                    <h4 className="method-container-heading">Operations/Methods</h4>
+                                    {details.operations.map(operation => {
+                                        return (
+                                            <div key={operation.methodName}>
+                                            {
+                                                <div className="method-name">{operation.methodName || '-'}</div>
+                                            }
+                                            {
+                                                operation.description && <div className="method-description">{operation.description || '-'}</div>
+                                            }
+                                            {
+                                                operation.implementationCode && 
+                                                <>
+                                                    <div className="implementation-code-container">
+                                                    <pre>
+                                                        <code className="javascript code-block">{operation.implementationCode}</code>
+                                                     </pre>
+                                                     <button onClick={() => copyCodeBlock(operation.implementationCode)}>Copy</button>
+                                                    </div>
+                                                </>
+                                            }
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                                : <div>No operations/methods found for this data structure.</div>
+                            }
+                        </div>
+                    ) : <p>Loading...</p>
             }
         </div>
     );
