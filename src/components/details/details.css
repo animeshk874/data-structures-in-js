@@ -22,7 +22,55 @@ p.primary-text {
     text-align: left;
 }
 
+.method-container {
+    /* border: 1px solid red; */
+}
+
+.method-container-heading {
+    margin-top: 40px;
+    color: #689FD2;
+    font-size: 14px;
+    font-weight: 600;
+
+}
+
+.method-list {
+    padding-left: 20px !important;
+}
+
+.method-list-item {
+    margin-top: 30px;
+}
+
+.method-list-item, .method-name {
+    color: #999999;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.method-description {
+    color: #999999;
+    font-weight: 400;
+}
+
+.copy-button {
+    text-align: right;
+}
+
+.copy-button > button {
+    background-color: #ECF6FF;
+    color: #689FD2;
+    border: none;
+    border-radius: 3px 3px 0 0;
+    font-size: 14px;
+    padding: 4px 20px;
+}
+
+.copy-button > button:focus {
+    outline: none;
+}
+
 .code-block {
-    padding-left: 25px !important;
-    padding-right: 25px !important;
+    padding: 25px !important;
+    font-weight: 400;
 }

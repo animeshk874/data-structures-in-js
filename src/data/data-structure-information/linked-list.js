@@ -1,10 +1,10 @@
 const linkedList = {
     title: 'Linked List',
-    description: '',
+    description: 'An array is a variable that can hold more than one value at a time.',
     operations: [
         {
             methodName: 'fooBar(num)',
-            description: '',
+            description: 'fooBar(num) takes in a number, divides it by 2, and then returns the floor of that value.',
             implementationCode: `function fooBar(num){
     return Math.floor(num/2);
 }`,
