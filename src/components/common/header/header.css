@@ -1,0 +1,20 @@
+.search-container {
+  width: 400px;
+  margin: auto;
+  max-width: 90%;
+}
+
+.search-container > input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: 1px solid #eaeaea;
+  font-size: 14px;
+}
+.search-container > input:focus {
+  outline-color: transparent;
+}
+
+.search-container > input::placeholder {
+  color: #999999;
+}
