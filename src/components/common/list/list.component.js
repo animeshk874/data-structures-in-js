@@ -6,8 +6,8 @@ import { Route, BrowserRouter as Router, Link, Redirect, Switch } from 'react-ro
 export default function List() {
     const [list, setList] = useState([]);
 
-    import('../../../data/data-structures.mjs').then((data) => {
-        if (data?.default?.length) setList(data.default);
+    import('../../../data/data-structures').then(({ dataStructures }) => {
+        if (dataStructures?.length) setList(dataStructures);
     }).catch(error => console.error(error))
 
     return (
