@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-  background-color: #F6FAFF;
+  background-color: #F6FAFF !important;
 }
 
 .App {
