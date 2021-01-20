@@ -1,16 +1,16 @@
-import dataStructures from '../src/data/data-structures.mjs';
-import fs from 'fs';
+const { dataStructures } = require('../src/data/data-structures.js');
+const fs = require('fs');
 
-const DATA_STRUCTURES_FILE = 'src/data/data-structures.mjs';
+const DATA_STRUCTURES_FILE = 'src/data/data-structures.js';
 const DATA_STRUCTURES_DIR = 'src/data/data-structure-information';
 
-if(!process.argv || !process.argv.length || !process.argv[2]){
+if (!process.argv || !process.argv.length || !process.argv[2]) {
     throw new Error('Please provide a data structure name!');
 }
 
 const dataStructureKey = process.argv[2] && process.argv[2].toLowerCase();
 
-if(dataStructureExists()){
+if (dataStructureExists()) {
     console.log('\x1b[31mFailed to add structure!');
     console.log('\x1b[0m');
     throw new Error('Data structure already exists!');
@@ -30,7 +30,7 @@ const dataStructureObject = `
 fs.readFile(DATA_STRUCTURES_FILE, 'utf8', (err, data) => {
     if (err) throw err;
     const dataArr = data.split(']');
-    dataArr[0] = dataArr[0].substring(0,dataArr[0].length - 1) + ',';
+    dataArr[0] = dataArr[0].substring(0, dataArr[0].length - 1) + ',';
     dataArr[1] = ']' + dataArr[1];
     dataArr.splice(1, 0, `${dataStructureObject}`);
 
@@ -40,17 +40,17 @@ fs.readFile(DATA_STRUCTURES_FILE, 'utf8', (err, data) => {
         console.log(`Updating ${DATA_STRUCTURES_FILE}`);
         console.log(`Updated ${DATA_STRUCTURES_FILE}`);
         createAndUpdateDataStructurefile();
-      });
+    });
 });
 
 
-function dataStructureExists(){
+function dataStructureExists() {
     return dataStructures.findIndex((item) => {
         return item.key === dataStructureKey;
     }) > -1;
 }
 
-function createAndUpdateDataStructurefile(){
+function createAndUpdateDataStructurefile() {
     fs.readFile('src/data/data-structure-blueprint.txt', 'utf8', (err, data) => {
         if (err) throw err;
 

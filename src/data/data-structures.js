@@ -9,4 +9,4 @@ const dataStructures = [
     }
 ];
 
-export default dataStructures;
+module.exports = { dataStructures };
