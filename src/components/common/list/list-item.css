@@ -1,23 +1,28 @@
 .list-item {
-    margin: 5px;
-    background: #fff;
-    padding: 6px 25px;
-    border-radius: 4px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.07);
-    cursor: pointer;
-    transition: all 0.3s ease, outline-color 0s linear;
+  margin: 5px;
+  background: #fff;
+  padding: 6px 25px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.list-item.active {
+  outline-color: #689fd2;
+  border: 2px solid #689fd2;
 }
 
 .list-item > p {
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-    font-weight: 600;
-    color: #689FD2;
-    text-decoration: none !important;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #689fd2;
+  text-decoration: none !important;
 }
 
 .list-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.06);
 }
