@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Route, BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
-import TagList from './tagList.component';
+import TagList from './tag-list.component';
 import Details from '../../details/details.component';
 
 export default function List() {
