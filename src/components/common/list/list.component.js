@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import ListItem from './list-item.component';
+import { Route, BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
+import TagList from './tag-list.component';
 import Details from '../../details/details.component';
-import { Route, BrowserRouter as Router, Link, Redirect, Switch } from 'react-router-dom';
 
 export default function List() {
     const [list, setList] = useState([]);
@@ -22,21 +22,4 @@ export default function List() {
     );
 }
 
-function TagList(props) {
-    const { list } = props
-    return (
-        <div className="d-flex justify-content-center">
-            {list.map((item) => {
-                return (
-                    <Link
-                        key={item.key}
-                        to={`/details?q=${item.key}`}
-                        className="text-decoration-none"
-                    >
-                        <ListItem listItem={item} />
-                    </Link>
-                );
-            })}
-        </div>
-    )
-}
+
