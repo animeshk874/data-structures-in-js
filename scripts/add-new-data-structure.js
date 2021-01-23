@@ -61,6 +61,7 @@ function setupDataStructure() {
       const dummyData = JSON.parse(data) || {};
       console.log(`Creating boilerplate: ${DATA_STRUCTURES_DIR}/${dataStructureKey}.json`);
       dummyData.title = dataStructureTitle;
+      dummyData.classImplementationCode = dummyData.classImplementationCode.replace(/DataStructureName/g, dataStructureTitle.split(' ').join());
       fs.writeFile(`${DATA_STRUCTURES_DIR}/${dataStructureKey}.json`, JSON.stringify(dummyData, null, 2), (err) => {
         if (err) throw err;
         console.log(`Updating ${DATA_STRUCTURES_DIR}/${dataStructureKey}.json`);

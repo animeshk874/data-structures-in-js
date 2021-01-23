@@ -1,11 +1,13 @@
 {
   "title": "Stack",
   "description": "",
+  "classImplementationCode": "class Stack {\n    //Stack implementation goes here\n}",
   "operations": [
     {
+      "key": "fooBar",
       "methodName": "fooBar(num)",
       "description": "",
-      "implementationCode": "function fooBar(num){\n    return Math.floor(num/2);\n}",
+      "implementationCode": "fooBar(num){\n    return Math.floor(num/2);\n}",
       "parameters": [
         {
           "name": "num",
