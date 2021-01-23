@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import hljs from "highlight.js/lib/core";
@@ -16,19 +16,25 @@ export default function Details() {
   // const {allItems} = props;
   hljs.initHighlighting.called = false;
   let query = useQuery();
-  const dataStructureKey = query.get("q");
+  let dataStructureKey = query.get("q");
   const [details, setDetails] = useState(null);
 
-  import(`../../data/data-structure-information/${dataStructureKey}.js`).then((data) => {
-    if (data?.default) {
-      setDetails(data.default);
-      setTimeout(() => {
-        hljs.initHighlighting();
-      }, 0);
+  useEffect(() => {
+    if(!dataStructureKey){
+      return;
     }
-  }).catch((error) => {
-    console.error(error);
-  });
+    fetch(`/data/data-structure-information/${dataStructureKey}.json`)
+        .then((data) => data.json())
+        .then((dataStructures) => {
+          if (dataStructures) {
+            setDetails(dataStructures);
+            setTimeout(() => {
+              hljs.initHighlighting();
+          }, 0);
+        }
+        }).catch(error => console.error(error));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataStructureKey]);
 
   function copyCodeBlock(text) {
     copy(text);

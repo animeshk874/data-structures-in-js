@@ -1,7 +1,7 @@
 import ListItem from './list-item.component';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function TagList(props) {
+export default function TagList(props = {list: []}) {
   const { list } = props;
   let query = new URLSearchParams(useLocation().search);
 
