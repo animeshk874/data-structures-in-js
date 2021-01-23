@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import hljs from "highlight.js/lib/core";
@@ -23,6 +23,7 @@ export default function Details() {
     if (!dataStructureKey) {
       return;
     }
+    setDetails(null);
     fetch(`/data/data-structure-information/${dataStructureKey}.json`)
       .then((data) => data.json())
       .then((dataStructures) => {
@@ -85,8 +86,8 @@ export default function Details() {
                   </h4>
                   {
                     <ol className="method-list">
-                      {details?.operations?.map(operation => (
-                        <li key={operation.methodName} className="method-list-item mb-5 pb-5">
+                      {details?.operations?.map((operation, operationIndex) => (
+                        <li key={operation.methodName} className={"method-list-item " + ((operationIndex === (details.operations.length - 1)) ? "" : "mb-5 pb-5")}>
                           <div id={operation.key}>
                             {
                               <div className="method-section-title mt-2 mb-2">{operation?.methodName || '-'}</div>
@@ -96,7 +97,7 @@ export default function Details() {
                             }
                             {
                               operation?.implementationCode &&
-                              <>
+                              <Fragment>
                                 <div className="implementation-code-container mt-3 mb-2 position-relative">
                                   <div className="copy-button position-relative w-100">
                                     <button onClick={() => copyCodeBlock(operation.implementationCode)}>Copy</button>
@@ -105,11 +106,11 @@ export default function Details() {
                                     <code className="javascript code-block">{operation.implementationCode}</code>
                                   </pre>
                                 </div>
-                              </>
+                              </Fragment>
                             }
                             {
                               operation.parameters && operation.parameters.length ?
-                                <>
+                                <Fragment>
                                   <div className="method-section-title mt-4 pt-3 mb-2">Parameters</div>
                                   {
                                     operation.parameters.map((param) => {
@@ -121,37 +122,37 @@ export default function Details() {
                                       )
                                     })
                                   }
-                                </> : <></>
+                                </Fragment> : <Fragment></Fragment>
                             }
                             {
                               operation.exampleCode &&
-                              <>
+                              <Fragment>
                                 <div className="method-section-title mt-4 pt-3 mb-2">Usage</div>
                                 <div className="implementation-code-container mt-3 mb-2 position-relative">
                                   <pre>
                                     <code className="javascript code-block">{operation.exampleCode}</code>
                                   </pre>
                                 </div>
-                              </>
+                              </Fragment>
                             }
                             {
                               operation.dependencies && operation.dependencies.length ?
-                                <>
+                                <Fragment>
                                   <div className="method-section-title mt-4 pt-3 mb-2">Dependencies</div>
                                   {
                                     operation.dependencies.map((dependency, index) => {
                                       return (
                                         <span className="method-dependency" key={dependency}>
-                                          <a href={`#${dependency}`}>{(getDependecySignature(dependency) || {}).methodName}</a>{index === (operation.dependencies.length - 1) ? '' : <>,&nbsp;</>}
+                                          <a href={`#${dependency}`}>{(getDependecySignature(dependency) || {}).methodName}</a>{index === (operation.dependencies.length - 1) ? '' : <Fragment>,&nbsp;</Fragment>}
                                         </span>
                                       )
                                     })
                                   }
-                                </> : <></>
+                                </Fragment> : <Fragment></Fragment>
                             }
                             {
                               operation.sources && operation.sources.length ?
-                                <>
+                                <Fragment>
                                   <div className="method-section-title mt-4 pt-3 mb-2">Sources</div>
                                   {
                                     operation.sources.map((source, index) => {
@@ -162,7 +163,7 @@ export default function Details() {
                                       )
                                     })
                                   }
-                                </> : <></>
+                                </Fragment> : <Fragment></Fragment>
                             }
                           </div>
                         </li>
