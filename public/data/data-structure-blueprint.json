@@ -1,0 +1,25 @@
+{
+  "title": "",
+  "description": "",
+  "operations": [
+    {
+      "methodName": "fooBar(num)",
+      "description": "",
+      "implementationCode": "function fooBar(num){\n    return Math.floor(num/2);\n}",
+      "parameters": [
+        {
+          "name": "num",
+          "description": "Number to be divided by 2"
+        }
+      ],
+      "exampleCode": "\nvar myNum = 100;\nfooBar(myNum); // 50\n",
+      "sources": [
+        {
+          "url": "https://github.com/animeshk874/data-structures-in-js",
+          "label": "Data Structures in JS"
+        }
+      ],
+      "otherParameters": []
+    }
+  ]
+}
