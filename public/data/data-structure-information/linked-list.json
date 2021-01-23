@@ -1,18 +1,63 @@
 {
     "title": "Linked List",
     "description": "An array is a variable that can hold more than one value at a time.",
+    "classImplementationCode": "class LinkedList {\n    //LinkedList implementation goes here\n}",
     "operations": [
       {
+        "key": "fooBar",
         "methodName": "fooBar(num)",
         "description": "fooBar(num) takes in a number, divides it by 2, and then returns the floor of that value.",
-        "implementationCode": "function fooBar(num){\n    return Math.floor(num/2);\n}",
+        "implementationCode": "fooBar(num){\n    return Math.floor(num/2);\n}",
         "parameters": [
           {
             "name": "num",
             "description": "Number to be divided by 2"
           }
         ],
-        "exampleCode": "\nvar myNum = 100;\nfooBar(myNum); // 50\n",
+        "exampleCode": "var myNum = 100;\nfooBar(myNum); // 50\n",
+        "dependencies": ["fooBaz", "fooBam"],
+        "sources": [
+          {
+            "url": "https://github.com/animeshk874/data-structures-in-js",
+            "label": "Data Structures in JS"
+          }
+        ],
+        "otherParameters": []
+      },
+      {
+        "key": "fooBaz",
+        "methodName": "fooBaz(num)",
+        "description": "fooBaz(num) takes in a number, divides it by 2, and then returns the floor of that value.",
+        "implementationCode": "fooBaz(num){\n    return Math.floor(num/2);\n}",
+        "parameters": [
+          {
+            "name": "num",
+            "description": "Number to be divided by 2"
+          }
+        ],
+        "exampleCode": "var myNum = 100;\nfooBaz(myNum); // 50\n",
+        "dependencies": ["fooBam"],
+        "sources": [
+          {
+            "url": "https://github.com/animeshk874/data-structures-in-js",
+            "label": "Data Structures in JS"
+          }
+        ],
+        "otherParameters": []
+      },
+      {
+        "key": "fooBam",
+        "methodName": "fooBam(num)",
+        "description": "fooBam(num) takes in a number, divides it by 2, and then returns the floor of that value.",
+        "implementationCode": "fooBam(num){\n    return Math.floor(num/2);\n}",
+        "parameters": [
+          {
+            "name": "num",
+            "description": "Number to be divided by 2"
+          }
+        ],
+        "exampleCode": "var myNum = 100;\nfooBam(myNum); // 50\n",
+        "dependencies": [],
         "sources": [
           {
             "url": "https://github.com/animeshk874/data-structures-in-js",

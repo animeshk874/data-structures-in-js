@@ -11,19 +11,11 @@ p.primary-text {
     color: #999999;
 }
 
-.details-inner-container {
-
-}
-
 .item-title > h3 {
     font-weight: 600;
     font-size: 28px;
     color: #689FD2;
     text-align: left;
-}
-
-.method-container {
-    /* border: 1px solid red; */
 }
 
 .method-container-heading {
@@ -42,7 +34,11 @@ p.primary-text {
     margin-top: 30px;
 }
 
-.method-list-item, .method-name {
+.method-list-item:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.method-list-item, .method-section-title {
     color: #999999;
     font-weight: 600;
     font-size: 16px;
@@ -73,4 +69,29 @@ p.primary-text {
 .code-block {
     padding: 25px !important;
     font-weight: 400;
+}
+
+.method-parameter-name {
+  color: #689FD2;
+}
+
+.method-parameter-description {
+  color: #999999;
+  font-weight: 400;
+}
+
+.method-dependency, 
+.method-dependency > a,
+.method-dependency > a:hover,
+.method-dependency > a:visited,
+.method-dependency > a:active {
+  color: #689FD2 !important;
+}
+
+.method-source,
+.method-source > a,
+.method-source > a:hover,
+.method-source > a:visited,
+.method-source > a:active {
+  color: #689FD2 !important;
 }

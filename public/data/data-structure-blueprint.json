@@ -1,18 +1,21 @@
 {
   "title": "",
   "description": "",
+  "classImplementationCode": "class DataStructureName {\n    //DataStructureName implementation goes here\n}",
   "operations": [
     {
+      "key": "fooBar",
       "methodName": "fooBar(num)",
       "description": "",
-      "implementationCode": "function fooBar(num){\n    return Math.floor(num/2);\n}",
+      "implementationCode": "fooBar(num){\n    return Math.floor(num/2);\n}",
       "parameters": [
         {
           "name": "num",
           "description": "Number to be divided by 2"
         }
       ],
-      "exampleCode": "\nvar myNum = 100;\nfooBar(myNum); // 50\n",
+      "exampleCode": "var myNum = 100;\nfooBar(myNum); // 50\n",
+      "dependencies": [],
       "sources": [
         {
           "url": "https://github.com/animeshk874/data-structures-in-js",
