@@ -1,0 +1,208 @@
+{
+  "title": "Heap",
+  "description": "",
+  "classImplementationCode": "class Heap {\n  constructor(array,typeOfHeap = 1) {\n    this.typeOfHeap = typeOfHeap;\n    this.heap = this.buildHeap(array, typeOfHeap);\n  }\n}",
+  "operations": [
+    {
+      "key": "buildHeap",
+      "methodName": "buildHeap(array, typeOfHeap)",
+      "description": "",
+      "implementationCode": " buildHeap(array, typeOfHeap) {\n   \n      const firstParentIdx = Math.floor((array.length - 2) / 2);\n      \n      for(let currentIdx = firstParentIdx; currentIdx >=0; currentIdx--) {\n         this.shiftDown(currentIdx, array.length - 1, array, typeOfHeap);\n      }\n  \n      return array; \n  }",
+      "parameters": [
+        {
+          "name": "array",
+          "description": "Array of numbers for which heap you want to create heap"
+        },
+        {
+          "name": "typeOfHeap",
+          "description": "The type of Heap you want to make for eg - 1 is for min heap , 2 is for max heap"
+        }
+      ],
+      "exampleCode": "heap = new Heap([1, 2, 3, 4, 5, 6, 7, 8, 9],1);",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": "Heap Data Structure in JS"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "shiftDown",
+      "methodName": "shiftDown(currentIdx, endIdx, heap, typeOfHeap)",
+      "description": "",
+      "implementationCode": "shiftDown(currentIdx, endIdx, heap, typeOfHeap) {\n    let childOneIdx = currentIdx * 2 + 1;\n\n    while (childOneIdx <= endIdx) {\n\n        const childTwoIdx = currentIdx * 2 + 2 <= endIdx ? currentIdx * 2 + 2 : -1;\n        let idxToSwap;\n\n        let conditionToChooseChild = typeOfHeap === 1 ? heap[childTwoIdx] < heap[childOneIdx] : heap[childTwoIdx] > heap[childOneIdx];\n\n        if (childTwoIdx !== -1 && conditionToChooseChild) {\n            idxToSwap = childTwoIdx;\n        } else {\n            idxToSwap = childOneIdx;\n        }\n\n        let condition = typeOfHeap === 1 ? heap[idxToSwap] < heap[currentIdx] :\n            heap[idxToSwap] > heap[currentIdx];\n\n        if (condition) {\n            this.swap(currentIdx, idxToSwap, heap);\n            currentIdx = idxToSwap;\n            childOneIdx = currentIdx * 2 + 1;\n            condition = typeOfHeap === 1 ? heap[idxToSwap] < heap[currentIdx] : heap[idxToSwap] > heap[currentIdx];\n        } else {\n            return;\n        }\n    }\n}",
+      "parameters": [
+        {
+          "name": "currentIdx",
+          "description": "The index from where we have to start the shift down"
+        },
+        {
+          "name": "endIdx",
+          "description": "The index where we have to end the shift down"
+        },
+        {
+          "name": "heap",
+          "description": "Heap which is built till now"
+        },
+        {
+          "name": "typeOfHeap",
+          "description": "The type of Heap you want to make i.e. 1 is for min heap, 2 is for max heap"
+        }
+      ],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": "Heap Data Structure in JS"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "shiftUp",
+      "methodName": "shiftUp(currentIdx, heap, typeOfHeap)",
+      "description": "",
+      "implementationCode": "shiftUp(currentIdx, heap, typeOfHeap) {\n    let parentIdx = Math.floor((currentIdx - 1) / 2);\n\n    console.log('typeOfHeap', typeOfHeap);\n\n    let condition = typeOfHeap === 1 ? heap[currentIdx] < heap[parentIdx] : heap[currentIdx] > heap[parentIdx];\n\n    while (currentIdx > 0 && condition) {\n        this.swap(currentIdx, parentIdx, heap);\n        currentIdx = parentIdx;\n        parentIdx = Math.floor((currentIdx - 1) / 2);\n        condition = typeOfHeap === 1 ? heap[currentIdx] < heap[parentIdx] : heap[currentIdx] > heap[parentIdx];\n\n    }\n\n}",
+      "parameters": [
+        {
+          "name": "currentIdx",
+          "description": "The index from where we have to start the shift up"
+        },
+        {
+          "name": "heap",
+          "description": "Heap which is built till now"
+        },
+        {
+          "name": "typeOfHeap",
+          "description": "The type of Heap you want to make i.e. 1 is for min heap, 2 is for max heap"
+        }
+      ],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": "Heap Data Structure in JS"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "peek",
+      "methodName": "peek()",
+      "description": "",
+      "implementationCode": "peek() {\n    return this.heap[0];\n}",
+      "parameters": [],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": "peek function of Heap which returns top most element of Heap in JS"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "pop",
+      "methodName": "pop()",
+      "description": "",
+      "implementationCode": "pop() {\n    this.swap(0, this.heap.length - 1, this.heap);\n    const valueToRemove = this.heap.pop();\n    this.shiftDown(0, this.heap.length - 1, this.heap);\n    return valueToRemove;\n}",
+      "parameters": [],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": "pop function of Heap which removes top most element of Heap in JS"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "push",
+      "methodName": "push(value)",
+      "description": "",
+      "implementationCode": "push(value) {\n    this.heap.push(value);\n    this.shiftUp(this.heap.length - 1, this.heap, this.typeOfHeap);\n    console.log(this.heap);\n}",
+      "parameters": [
+        {
+          "name": "value",
+          "description": "The value  which have to be pushed into the Heap"
+        }
+      ],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": "push function of Heap which push values in the Heap and then shift up method is called to make it Heap"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "swap",
+      "methodName": "swap(i, j, heap)",
+      "description": "",
+      "implementationCode": "swap(i, j, heap) {\n    const temp = heap[j];\n    heap[j] = heap[i];\n    heap[i] = temp;\n}",
+      "parameters": [
+        {
+          "name": "i",
+          "description": "The index with which it has to be swaped"
+        },
+        {
+          "name": "j",
+          "description": "The index with which it has to be swaped"
+        },
+        {
+          "name": "heap",
+          "description": "Heap which is built till now"
+        }
+      ],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": "swap function of Heap which is used internally for shift up and shift down"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "size",
+      "methodName": "size()",
+      "description": "",
+      "implementationCode": "size() {\n    return this.heap.length;\n}",
+      "parameters": [],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": "size function of Heap which is used to return the size of heap"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "empty",
+      "methodName": "empty()",
+      "description": "",
+      "implementationCode": "empty() {\n        return this.heap.length > 0 ? false : true;\n    }",
+      "parameters": [],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": "empty function of Heap which is used to check if heap is empty or not"
+        }
+      ],
+      "otherParameters": []
+    }
+  ]
+}
