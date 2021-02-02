@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import copy from 'copy-to-clipboard';
+import beautify from 'js-beautify';
+import CONSTANTS from '../../utils/constants';
 
 import "highlight.js/styles/atom-one-light.css";
 import './details.css';
@@ -71,10 +73,10 @@ export default function Details() {
               details.classImplementationCode &&
               <div className="implementation-code-container mt-3 mb-4 position-relative">
                 <div className="copy-button position-relative w-100">
-                  <button onClick={() => copyCodeBlock(details.classImplementationCode)}>Copy</button>
+                  <button onClick={() => copyCodeBlock(getBeautifiedCode(details.classImplementationCode))}>Copy</button>
                 </div>
                 <pre>
-                  <code className="javascript code-block">{details.classImplementationCode}</code>
+                  <code className="javascript code-block">{getBeautifiedCode(details.classImplementationCode)}</code>
                 </pre>
               </div>
             }
@@ -100,10 +102,10 @@ export default function Details() {
                               <Fragment>
                                 <div className="implementation-code-container mt-3 mb-2 position-relative">
                                   <div className="copy-button position-relative w-100">
-                                    <button onClick={() => copyCodeBlock(operation.implementationCode)}>Copy</button>
+                                    <button onClick={() => copyCodeBlock(getBeautifiedCode(operation.implementationCode))}>Copy</button>
                                   </div>
                                   <pre>
-                                    <code className="javascript code-block">{operation.implementationCode}</code>
+                                    <code className="javascript code-block">{getBeautifiedCode(operation.implementationCode)}</code>
                                   </pre>
                                 </div>
                               </Fragment>
@@ -130,7 +132,7 @@ export default function Details() {
                                 <div className="method-section-title mt-4 pt-3 mb-2">Usage</div>
                                 <div className="implementation-code-container mt-3 mb-2 position-relative">
                                   <pre>
-                                    <code className="javascript code-block">{operation.exampleCode}</code>
+                                    <code className="javascript code-block">{getBeautifiedCode(operation.exampleCode)}</code>
                                   </pre>
                                 </div>
                               </Fragment>
@@ -178,6 +180,10 @@ export default function Details() {
       }
     </div>
   );
+}
+
+function getBeautifiedCode(codeBlock){
+  return beautify(codeBlock, CONSTANTS.beautifyOptions);
 }
 
 function useQuery() {
