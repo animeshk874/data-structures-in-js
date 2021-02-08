@@ -54,7 +54,7 @@
         }
       ],
       "exampleCode": "",
-      "dependencies": [],
+      "dependencies": ["swap"],
       "sources": [
         {
           "url": "https://gist.github.com/kolauren/4671157",
@@ -83,7 +83,7 @@
         }
       ],
       "exampleCode": "",
-      "dependencies": [],
+      "dependencies": ["swap"],
       "sources": [
         {
           "url": "https://gist.github.com/kolauren/4671157",
@@ -116,13 +116,10 @@
       "parameters": [],
       "exampleCode": "let heap = new Heap([1, 2, 3, 4, 5, 6, 7, 8, 9],1);\n let elementPopped = heap.pop()",
       "dependencies": [
-        "shiftDown"
+        "shiftDown",
+        "swap"
       ],
       "sources": [
-        {
-          "url": "",
-          "label": "pop function of Heap which removes top most element of Heap in JS"
-        }
       ],
       "otherParameters": []
     },
@@ -130,7 +127,7 @@
       "key": "push",
       "methodName": "push(value)",
       "description": "push function is used insert a value in heap. After inserting a number heap shiftUp function is called internally to mainatain the properties of heap.",
-      "implementationCode": "push(value) {\n    this.heap.push(value);\n    this.shiftUp(this.heap.length - 1, this.heap, this.typeOfHeap);\n    console.log(this.heap);\n}",
+      "implementationCode": "push(value) {\n    this.heap.push(value);\n    this.shiftUp(this.heap.length - 1, this.heap, this.typeOfHeap);\n}",
       "parameters": [
         {
           "name": "value",
@@ -195,12 +192,12 @@
       "otherParameters": []
     },
     {
-      "key": "empty",
-      "methodName": "empty()",
-      "description": "empty function is used to check if the heap is empty or not",
-      "implementationCode": "empty() {\n        return this.heap.length > 0 ? false : true;\n    }",
+      "key": "isEmpty",
+      "methodName": "isEmpty()",
+      "description": "isEmpty() function is used to check if the heap is empty or not",
+      "implementationCode": "isEmpty() {\n        return this.heap.length > 0 ? false : true;\n    }",
       "parameters": [],
-      "exampleCode": "let heap = new Heap([2, 3, 1], 1); \n let isHeapEmpty = heap.empty()",
+      "exampleCode": "let heap = new Heap([2, 3, 1], 1); \n let isHeapEmpty = heap.isEmpty()",
       "dependencies": [],
       "sources": [
         {
