@@ -1,0 +1,211 @@
+{
+  "title": "Heap",
+  "description": "A heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property:\n\nHeaps must be Complete Binary Trees.\nThe nodes must be ordered according to the Heap order property. Two heap order properties are as follows:\n\nMax-Heap: In a Max-Heap the key present at the root node must be greatest among the keys present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.\nMin-Heap: In a Min-Heap the key present at the root node must be minimum among the keys present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.",
+  "classImplementationCode": "class Heap {\n  constructor(array,typeOfHeap = 1) {\n    this.typeOfHeap = typeOfHeap;\n    this.heap = this.buildHeap(array, typeOfHeap);\n  }\n}",
+  "operations": [
+    {
+      "key": "buildHeap",
+      "methodName": "buildHeap(array, typeOfHeap)",
+      "description": "This method is used to build the heap from an array. Internally it is using shiftDown method for which implementation is done below.",
+      "implementationCode": " buildHeap(array, typeOfHeap) {\n   \n      const firstParentIdx = Math.floor((array.length - 2) / 2);\n      \n      for(let currentIdx = firstParentIdx; currentIdx >=0; currentIdx--) {\n         this.shiftDown(currentIdx, array.length - 1, array, typeOfHeap);\n      }\n  \n      return array; \n  }",
+      "parameters": [
+        {
+          "name": "array",
+          "description": "Array of numbers for which heap you want to create heap"
+        },
+        {
+          "name": "typeOfHeap",
+          "description": "The type of Heap you want to make for eg - 1 is for min heap , 2 is for max heap"
+        }
+      ],
+      "exampleCode": "let heap = new Heap([1, 2, 3, 4, 5, 6, 7, 8, 9],1);",
+      "dependencies": [
+        "shiftDown"
+      ],
+      "sources": [
+        {
+          "url": "https://www.hackerearth.com/practice/data-structures/trees/heapspriority-queues/tutorial/",
+          "label": "Heap Data Structure"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "shiftDown",
+      "methodName": "shiftDown(currentIdx, endIdx, heap, typeOfHeap)",
+      "description": "Shift Down method is used to build the heap from an array. It is used internally in build heap method.\nInternally it fetches all the children of the parent node of the index from where shift down has to start and then finds the smallest or the largest child according to min heap or max heap condition and then replace that child node with that parent node.\nThis process keeps on repeating untill we reach the end index which is passed as an argument in the function.",
+      "implementationCode": "shiftDown(currentIdx, endIdx, heap, typeOfHeap) {\n    let childOneIdx = currentIdx * 2 + 1;\n\n    while (childOneIdx <= endIdx) {\n\n        const childTwoIdx = currentIdx * 2 + 2 <= endIdx ? currentIdx * 2 + 2 : -1;\n\n        let idxToSwap;\n\n        let conditionToChooseChild = typeOfHeap === 1 ? heap[childTwoIdx] < heap[childOneIdx] : heap[childTwoIdx] > heap[childOneIdx];\n\n        if (childTwoIdx !== -1 && conditionToChooseChild) {\n            idxToSwap = childTwoIdx;\n        } else {\n            idxToSwap = childOneIdx;\n        }\n\n        let condition = typeOfHeap === 1 ? heap[idxToSwap] < heap[currentIdx] :\n            typeOfHeap === 2 ? heap[idxToSwap] < heap[currentIdx] : false;\n\n\n        if (condition) {\n            this.swap(currentIdx, idxToSwap, heap);\n            currentIdx = idxToSwap;\n            childOneIdx = currentIdx * 2 + 1;\n            condition = childTwoIdx !== -1 && typeOfHeap === 1 ? heap[idxToSwap] < heap[currentIdx] : heap[idxToSwap] > heap[currentIdx];\n        } else {\n            return;\n        }\n    }\n}",
+      "parameters": [
+        {
+          "name": "currentIdx",
+          "description": "The index from where we have to start the shift down"
+        },
+        {
+          "name": "endIdx",
+          "description": "The index where we have to end the shift down"
+        },
+        {
+          "name": "heap",
+          "description": "Heap which is built till now"
+        },
+        {
+          "name": "typeOfHeap",
+          "description": "The type of Heap you want to make i.e. 1 is for min heap, 2 is for max heap"
+        }
+      ],
+      "exampleCode": "",
+      "dependencies": ["swap"],
+      "sources": [
+        {
+          "url": "https://gist.github.com/kolauren/4671157",
+          "label": "Shift Down Implementation on github"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "shiftUp",
+      "methodName": "shiftUp(currentIdx, heap, typeOfHeap)",
+      "description": "shiftUp method is internally used while inserting a new element in heap. This function places the element at the correct place according to condition which is given while creating heap i.e. 1 means min heap or 2 means max heap.",
+      "implementationCode": "shiftUp(currentIdx, heap, typeOfHeap) {\n    let parentIdx = Math.floor((currentIdx - 1) / 2);\n\n    let condition = typeOfHeap === 1 ? heap[currentIdx] < heap[parentIdx] :\n        typeOfHeap === 2 ? heap[currentIdx] < heap[parentIdx] : false;\n\n    while (currentIdx > 0 && condition) {\n        this.swap(currentIdx, parentIdx, heap);\n        currentIdx = parentIdx;\n        parentIdx = Math.floor((currentIdx - 1) / 2);\n        condition = typeOfHeap === 1 ? heap[currentIdx] < heap[parentIdx] : heap[currentIdx] > heap[parentIdx];\n\n    }\n\n}",
+      "parameters": [
+        {
+          "name": "currentIdx",
+          "description": "The index from where we have to start the shift up"
+        },
+        {
+          "name": "heap",
+          "description": "Heap which is built till now"
+        },
+        {
+          "name": "typeOfHeap",
+          "description": "The type of Heap you want to make i.e. 1 is for min heap, 2 is for max heap"
+        }
+      ],
+      "exampleCode": "",
+      "dependencies": ["swap"],
+      "sources": [
+        {
+          "url": "https://gist.github.com/kolauren/4671157",
+          "label": "Shift Up Implementation on github"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "peek",
+      "methodName": "peek()",
+      "description": "peek function of Heap returns top most element of Heap",
+      "implementationCode": "peek() {\n    return this.heap[0];\n}",
+      "parameters": [],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": ""
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "pop",
+      "methodName": "pop()",
+      "description": "pop is used to remove the top most element of Heap. After removing the top most element it internally uses shiftDown to maintain properties of heap.",
+      "implementationCode": "pop() {\n    this.swap(0, this.heap.length - 1, this.heap);\n    const valueToRemove = this.heap.pop();\n    this.shiftDown(0, this.heap.length - 1, this.heap);\n    return valueToRemove;\n}",
+      "parameters": [],
+      "exampleCode": "let heap = new Heap([1, 2, 3, 4, 5, 6, 7, 8, 9],1);\n let elementPopped = heap.pop()",
+      "dependencies": [
+        "shiftDown",
+        "swap"
+      ],
+      "sources": [
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "push",
+      "methodName": "push(value)",
+      "description": "push function is used insert a value in heap. After inserting a number heap shiftUp function is called internally to mainatain the properties of heap.",
+      "implementationCode": "push(value) {\n    this.heap.push(value);\n    this.shiftUp(this.heap.length - 1, this.heap, this.typeOfHeap);\n}",
+      "parameters": [
+        {
+          "name": "value",
+          "description": "The value  which have to be pushed into the Heap"
+        }
+      ],
+      "exampleCode": "let heap = new Heap([2, 3, 1], 1);\n heap.push(0); heap.push(4)",
+      "dependencies": [
+        "shiftUp"
+      ],
+      "sources": [
+        {
+          "url": "https://gist.github.com/kolauren/4671157",
+          "label": "push function of Heap on github"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "swap",
+      "methodName": "swap(i, j, heap)",
+      "description": "swap function is a utility function used internally in shiftUp and shiftDown function tp swap number between 2 positions.",
+      "implementationCode": "swap(i, j, heap) {\n    const temp = heap[j];\n    heap[j] = heap[i];\n    heap[i] = temp;\n}",
+      "parameters": [
+        {
+          "name": "i",
+          "description": "The index with which it has to be swaped"
+        },
+        {
+          "name": "j",
+          "description": "The index with which it has to be swaped"
+        },
+        {
+          "name": "heap",
+          "description": "Heap which is built till now"
+        }
+      ],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": ""
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "size",
+      "methodName": "size()",
+      "description": "size function is used to return the number of elements in a heap at any point.",
+      "implementationCode": "size() {\n    return this.heap.length;\n}",
+      "parameters": [],
+      "exampleCode": "let heap = new Heap([2, 3, 1], 1);\n let size = heap.size()",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": ""
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "isEmpty",
+      "methodName": "isEmpty()",
+      "description": "isEmpty() function is used to check if the heap is empty or not",
+      "implementationCode": "isEmpty() {\n        return this.heap.length > 0 ? false : true;\n    }",
+      "parameters": [],
+      "exampleCode": "let heap = new Heap([2, 3, 1], 1); \n let isHeapEmpty = heap.isEmpty()",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": ""
+        }
+      ],
+      "otherParameters": []
+    }
+  ]
+}

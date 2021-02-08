@@ -6,5 +6,9 @@
   {
     "key": "stack",
     "name": "Stack"
+  },
+  {
+    "key": "heap",
+    "name": "Heap"
   }
 ]
