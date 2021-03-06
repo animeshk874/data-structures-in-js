@@ -1,24 +1,104 @@
 {
   "title": "Stack",
-  "description": "",
-  "classImplementationCode": "class Stack {\n    //Stack implementation goes here\n}",
+  "description": "A stack is a data structure that uses a principle called Last-In-First-Out (LIFO), meaning that the last object added to the stack must be the first object removed from it. ... Peek: Return the object at the top of the stack (without removing it). Push: Add an object passed as an argument to the top of the stack.",
+  "classImplementationCode": "class Stack {\n    constructor() {\n        this.stack = [];\n    }\n}\n\t",
   "operations": [
     {
-      "key": "fooBar",
-      "methodName": "fooBar(num)",
-      "description": "",
-      "implementationCode": "fooBar(num){\n    return Math.floor(num/2);\n}",
+      "key": "push",
+      "methodName": "push(element)",
+      "description": "function to add a element in existing stack",
+      "implementationCode": "push(element) {\n    this.stack.push(element);\n}",
       "parameters": [
         {
-          "name": "num",
-          "description": "Number to be divided by 2"
+          "name": "element",
+          "description": "element to be added in stack"
         }
       ],
-      "exampleCode": "\nvar myNum = 100;\nfooBar(myNum); // 50\n",
+      "exampleCode": "let sta = new Stack();\nsta.push(2);",
       "sources": [
         {
-          "url": "https://github.com/animeshk874/data-structures-in-js",
-          "label": "Data Structures in JS"
+          "url": "https://www.hackerrank.com/challenges/30-queues-stacks/tutorial",
+          "label": "Stack Data Structure"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "pop",
+      "methodName": "pop()",
+      "description": "function to remove the last added element from existing stack",
+      "implementationCode": "pop() {\n\t\treturn this.stack.pop();\n  }",
+      "parameters": [
+        {
+          "name": "",
+          "description": ""
+        }
+      ],
+      "exampleCode": "let sta = new Stack();\nsta.push(2)\nsta.pop();",
+      "sources": [
+        {
+          "url": "https://www.hackerrank.com/challenges/30-queues-stacks/tutorial",
+          "label": "Stack Data Structure"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "peek",
+      "methodName": "peek()",
+      "description": "function to get the last added element from existing stack",
+      "implementationCode": "peek() {\n    return this.stack[this.stack.length - 1];\n}",
+      "parameters": [
+        {
+          "name": "",
+          "description": ""
+        }
+      ],
+      "exampleCode": "let sta = new Stack();\nsta.push(2);\nsta.push(3);\nlet lastAddedElemet = sta.peek();",
+      "sources": [
+        {
+          "url": "https://www.hackerrank.com/challenges/30-queues-stacks/tutorial",
+          "label": "Stack Data Structure"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "length",
+      "methodName": "length()",
+      "description": "function to get the length of existing stack",
+      "implementationCode": "length() {\n    return this.stack.length;\n}",
+      "parameters": [
+        {
+          "name": "",
+          "description": ""
+        }
+      ],
+      "exampleCode": "let sta = new Stack();\nsta.push(2);\nsta.push(3);\nlet lengthOfStack = sta.length();",
+      "sources": [
+        {
+          "url": "https://www.hackerrank.com/challenges/30-queues-stacks/tutorial",
+          "label": "Stack Data Structure"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "clear",
+      "methodName": "clear()",
+      "description": "function to empty the stack",
+      "implementationCode": "clear() {\n    this.stack = [];\n    return this.stack;\n}",
+      "parameters": [
+        {
+          "name": "",
+          "description": ""
+        }
+      ],
+      "exampleCode": "let sta = new Stack();\nsta.push(2);\nsta.push(3);\nsta.clear();",
+      "sources": [
+        {
+          "url": "https://www.hackerrank.com/challenges/30-queues-stacks/tutorial",
+          "label": "Stack Data Structure"
         }
       ],
       "otherParameters": []
