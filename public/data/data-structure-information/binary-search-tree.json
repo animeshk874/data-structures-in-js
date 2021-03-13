@@ -1,0 +1,91 @@
+{
+  "title": "Binary Search Tree",
+  "description": "",
+  "classImplementationCode": "class BST {\n    constructor(value) {\n    \t\tif(!value) {\n        \tthrow new Error('Please enter the root node');\n        }\n        this.value = value;\n        this.left = null;\n        this.right = null;\n    }",
+  "operations": [
+    {
+      "key": "insert",
+      "methodName": "insert(value)",
+      "description": "inserts the value in binary search tree according to its desired position",
+      "implementationCode": "insert(value) {\n        let currentNode = this;\n\n        if (!value) {\n            throw new Error('Please enter the value to insert!');\n        }\n\n        while (true) {\n\n            if (value < currentNode.value) {\n                if (currentNode.left === null) {\n                    currentNode.left = new BST(value);\n                    break;\n                } else {\n                    currentNode = currentNode.left;\n                }\n            } else {\n                if (currentNode.right === null) {\n                    currentNode.right = new BST(value);\n                    break;\n                } else {\n                    currentNode = currentNode.right;\n                }\n            }\n        }\n        return this;\n    }",
+      "parameters": [
+        {
+          "name": "value",
+          "description": "value to be searched in BST tree"
+        }
+      ],
+      "exampleCode": "let bst = new BST(5);\n bst.insert(6);",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "https://www.geeksforgeeks.org/binary-search-tree-data-structure/",
+          "label": "Binary Search Tree"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "contains",
+      "methodName": "contains(value)",
+      "description": "Searches the value in binary search tree.",
+      "implementationCode": "contains(value) {\n\n        if (!value) {\n            throw new Error('Please enter the value to search!');\n        }\n\n        let currentNode = this;\n        while (currentNode !== null) {\n            if (value < currentNode.value) {\n                currentNode = currentNode.left;\n            } else if (value > currentNode.value) {\n                currentNode = currentNode.right;\n            } else {\n                return true;\n            }\n        }\n        return false;\n    }",
+      "parameters": [
+        {
+          "name": "value",
+          "description": "value to be searched in BST tree"
+        }
+      ],
+      "exampleCode": "let bst = new BST(5);\n bst.insert(6)\n bst.contains(6)",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "https://www.geeksforgeeks.org/binary-search-tree-data-structure/",
+          "label": "Binary Search Tree"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "remove",
+      "methodName": "remove(value)",
+      "description": "Removes a value from binary search tree in O(log(N)) time",
+      "implementationCode": "remove(value, parentNode = null) {\n        let currentNode = this;\n\n        if (!value) {\n            throw new Error('Please enter the value to remove!');\n        }\n\n        while (currentNode !== null) {\n\n            if (value < currentNode.value) {\n                parentNode = currentNode;\n                currentNode = currentNode.left;\n            } else if (value > currentNode.value) {\n                parentNode = currentNode;\n                currentNode = currentNode.right;\n            } else {\n                /*  when the node has two children \n                    take the min from the right sub tree \n                    and then place it on the place of the \n                    node which you want to delete\n                */\n                if (currentNode.left !== null && currentNode.right !== null) {\n                    currentNode.value = currentNode.right.getMinValue();\n                    currentNode.right.remove(currentNode.value, currentNode);\n                } else if (parentNode === null) {\n                    /*\n                     when you want to delele the root node \n                     and have only one child i.e. either left or right \n                     child then make the immediate child node either right or left \n                     the root node and copy the left and right sub trees\n                     of the immediate child accordingly.\n                     for eg - \n                     \n                           1\n                            ''\n                             2\n                              ''\n                               3\n                                ''\n                                 4\n                                 \n                      if we remove 1 then tree will become   \n                      \n                       2\n                       ''\n                         3\n                         ''\n                           4\n                                 \n                    */\n                    if (currentNode.left !== null) {\n                        currentNode.value = currentNode.left.value;\n                        currentNode.right = currentNode.left.right;\n                        currentNode.left = currentNode.left.left;\n\n                    } else if (currentNode.right !== null) {\n                        currentNode.value = currentNode.right.value;\n                        currentNode.left = currentNode.right.left;\n                        currentNode.right = currentNode.right.right;\n\n                    } else {\n\n                        //this is a single node tree, do nothing\n                    }\n\n                }\n                /*\n                when you have to delete the leaf node\n                just take the parent node of that leaf \n                and replace it with its left node if it is\n                not null or else replace it with right node\n                */\n                else if (parentNode.left === currentNode) {\n\n                    console.log('this', this);\n                    console.log('value', value);\n                    parentNode.left = currentNode.left !== null ?\n                        currentNode.left : currentNode.right;\n                } else if (parentNode.right === currentNode) {\n                    parentNode.right = currentNode.left !== null ?\n                        currentNode.left : currentNode.right;\n                }\n                break;\n            }\n        }\n\n        return this;\n    }",
+      "parameters": [
+        {
+          "name": "value",
+          "description": "value to be removed in BST tree"
+        }
+      ],
+      "exampleCode": "let bst = new BST(5);\n bst.insert(6)\n bst.remove(6);",
+      "dependencies": ["getMinValue"],
+      "sources": [
+        {
+          "url": "https://www.geeksforgeeks.org/binary-search-tree-data-structure/",
+          "label": "Binary Search Tree"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "getMinValue",
+      "methodName": "getMinValue()",
+      "description": "Get the minimum value from binary search tree used as dependency in remove function",
+      "implementationCode": "getMinValue() {\n        let currentNode = this;\n        while (currentNode.left !== null) {\n            currentNode = currentNode.left;\n        }\n        return currentNode.value;\n    }",
+      "parameters": [
+        {
+          "name": "",
+          "description": ""
+        }
+      ],
+      "exampleCode": "",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "",
+          "label": ""
+        }
+      ],
+      "otherParameters": []
+    }
+  ]
+}

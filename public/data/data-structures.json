@@ -10,5 +10,9 @@
   {
     "key": "heap",
     "name": "Heap"
+  },
+  {
+    "key": "binary-search-tree",
+    "name": "Binary Search Tree"
   }
 ]
