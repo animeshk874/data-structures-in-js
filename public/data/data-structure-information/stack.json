@@ -29,12 +29,8 @@
       "description": "function to remove the last added element from existing stack",
       "implementationCode": "pop() {\n\t\treturn this.stack.pop();\n  }",
       "parameters": [
-        {
-          "name": "",
-          "description": ""
-        }
       ],
-      "exampleCode": "let sta = new Stack();\nsta.push(2)\nsta.pop();",
+      "exampleCode": "let sta = new Stack();\nsta.push(2)\nsta.pop(); // should return 2",
       "sources": [
         {
           "url": "https://www.hackerrank.com/challenges/30-queues-stacks/tutorial",
@@ -49,12 +45,8 @@
       "description": "function to get the last added element from existing stack",
       "implementationCode": "peek() {\n    return this.stack[this.stack.length - 1];\n}",
       "parameters": [
-        {
-          "name": "",
-          "description": ""
-        }
       ],
-      "exampleCode": "let sta = new Stack();\nsta.push(2);\nsta.push(3);\nlet lastAddedElemet = sta.peek();",
+      "exampleCode": "let sta = new Stack();\nsta.push(2);\nsta.push(3);\nlet lastAddedElement = sta.peek();\nconsole.log(lastAddedElement); // 3",
       "sources": [
         {
           "url": "https://www.hackerrank.com/challenges/30-queues-stacks/tutorial",
@@ -69,12 +61,8 @@
       "description": "function to get the length of existing stack",
       "implementationCode": "length() {\n    return this.stack.length;\n}",
       "parameters": [
-        {
-          "name": "",
-          "description": ""
-        }
       ],
-      "exampleCode": "let sta = new Stack();\nsta.push(2);\nsta.push(3);\nlet lengthOfStack = sta.length();",
+      "exampleCode": "let sta = new Stack();\nsta.push(2);\nsta.push(3);\nlet lengthOfStack = sta.length(); // 2",
       "sources": [
         {
           "url": "https://www.hackerrank.com/challenges/30-queues-stacks/tutorial",
@@ -89,10 +77,6 @@
       "description": "function to empty the stack",
       "implementationCode": "clear() {\n    this.stack = [];\n    return this.stack;\n}",
       "parameters": [
-        {
-          "name": "",
-          "description": ""
-        }
       ],
       "exampleCode": "let sta = new Stack();\nsta.push(2);\nsta.push(3);\nsta.clear();",
       "sources": [
