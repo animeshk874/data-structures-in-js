@@ -10,5 +10,9 @@
   {
     "key": "heap",
     "name": "Heap"
+  },
+  {
+    "key": "queue",
+    "name": "Queue"
   }
 ]
