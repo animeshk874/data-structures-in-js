@@ -14,5 +14,9 @@
   {
     "key": "binary-search-tree",
     "name": "Binary Search Tree"
+  },
+  {
+    "key": "queue",
+    "name": "Queue"
   }
 ]

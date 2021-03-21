@@ -1,0 +1,96 @@
+{
+  "title": "Queue",
+  "description": "A Queue works on the FIFO(First in First Out) principle. Hence, it performs two basic operations that is addition of elements at the end (rear) of the queue and removal of elements from the front of the queue. Like Stack, Queue is also a linear data structure",
+  "classImplementationCode": "class Queue {\n    // Array is used to implement a Queue \n    constructor() {\n        this.items = [];\n    }\n}",
+  "operations": [
+    {
+      "key": "enqueue",
+      "methodName": "enqueue()",
+      "description": "This function is used to add element to the queue",
+      "implementationCode": "enqueue(element) {\n    // adding element to the queue \n    this.items.push(element);\n}",
+      "parameters": [
+        {
+          "name": "element",
+          "description": "element to be added in queue"
+        }
+      ],
+      "exampleCode": "var queue = new Queue();\n\n// Adding elements to the queue \nqueue.enqueue(10);\nqueue.enqueue(10); \nqueue.enqueue(20); \nqueue.enqueue(30); \nqueue.enqueue(40); \nqueue.enqueue(50); \n// queue contains [10, 20, 30, 40, 50]",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "https://www.geeksforgeeks.org/implementation-queue-javascript/",
+          "label": "Queue Data Structures in JS"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "dequeue",
+      "methodName": "dequeue()",
+      "description": "This function is used to remove element from the queue. It removes one element at a time.",
+      "implementationCode": "dequeue() {\n    // removing element from the queue \n    // returns \"Underflow\" when called  \n    // on an empty queue \n    if (this.isEmpty())\n        return \"Underflow\";\n    return this.items.shift();\n}",
+      "parameters": [
+      ],
+      "exampleCode": "// Calling dequeue on an empty queue \n// returns \"Underflow\" \nconsole.log(queue.dequeue()) // logs \"Underflow\" (since deque() was called on an empty queue)\n\n\n// Adding elements to the queue \nqueue.enqueue(10);\nqueue.enqueue(20);\nqueue.enqueue(30);\nqueue.enqueue(40);\nqueue.enqueue(50);\n// queue contains [10, 20, 30, 40, 50]\n\n\nqueue.dequeue(); // removes 10 from the queue; queue now contains [20, 30, 40, 50]",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "https://www.geeksforgeeks.org/implementation-queue-javascript/",
+          "label": "Queue Data Structures in JS"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "front",
+      "methodName": "front()",
+      "description": "This function is used to get the front element of the queue",
+      "implementationCode": "front() {\n    // returns the Front element of  \n    // the queue without removing it. \n    if (this.isEmpty())\n        return \"No elements in Queue\";\n    return this.items[0];\n}",
+      "parameters": [
+      ],
+      "exampleCode": "// Adding elements to the queue\nqueue.enqueue(10);\nqueue.enqueue(20);\nqueue.enqueue(30);\nqueue.enqueue(40);\nqueue.enqueue(50);\n// queue contains [10, 20, 30, 40, 50]\n\n queue.front()// returns 10, without removing it from the queue",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "https://www.geeksforgeeks.org/implementation-queue-javascript/",
+          "label": "Queue Data Structures in JS"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "isEmpty",
+      "methodName": "isEmpty()",
+      "description": "This function checks if the queue is empty or not",
+      "implementationCode": "isEmpty() {\n    // return true if the queue is empty, false otherwise. \n    return this.items.length == 0;\n}",
+      "parameters": [
+      ],
+      "exampleCode": "queue.isEmpty(); // returns true \n\n// Adding elements to the queue\nqueue.enqueue(10);\nqueue.enqueue(20);\nqueue.enqueue(30);\nqueue.enqueue(40);\nqueue.enqueue(50);// queue contains [10, 20, 30, 40, 50]\n\nqueue.isEmpty() // returns false",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "https://www.geeksforgeeks.org/implementation-queue-javascript/",
+          "label": "Queue Data Structures in JS"
+        }
+      ],
+      "otherParameters": []
+    },
+    {
+      "key": "printQueue",
+      "methodName": "printQueue()",
+      "description": "This function prints all the elements of the queue",
+      "implementationCode": "printQueue() {\n    var str = \"\";\n    for (var i = 0; i < this.items.length; i++)\n        str += this.items[i] + \" \";\n    return str;\n}",
+      "parameters": [
+      ],
+      "exampleCode": "//Adding elements to the queue \nqueue.enqueue(10);\nqueue.enqueue(20);\nqueue.enqueue(30);\nqueue.enqueue(40);\nqueue.enqueue(50);\n// queue contains [10, 20, 30, 40, 50]\n\n//printing the elements of the queue\nconsole.log(queue.printQueue()); // prints \"10 20 30 40 50\"",
+      "dependencies": [],
+      "sources": [
+        {
+          "url": "https://www.geeksforgeeks.org/implementation-queue-javascript/",
+          "label": "Queue Data Structures in JS"
+        }
+      ],
+      "otherParameters": []
+    }
+  ]
+}
