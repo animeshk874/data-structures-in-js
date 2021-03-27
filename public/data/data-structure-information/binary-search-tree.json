@@ -28,7 +28,7 @@
       "key": "contains",
       "methodName": "contains(value)",
       "description": "Searches the value in binary search tree.",
-      "implementationCode": "contains(value) {\n\n        if (!value) {\n            throw new Error('Please enter the value to search!');\n        }\n\n        let currentNode = this;\n        while (currentNode !== null) {\n            if (value < currentNode.value) {\n                currentNode = currentNode.left;\n            } else if (value > currentNode.value) {\n                currentNode = currentNode.right;\n            } else if (value == currentNode.value) {\n                return true;\n            }\n        }\n        return false;\n    }",
+      "implementationCode": "contains(value) {\n\n        if (!value) {\n            throw new Error('Please enter the value to search!');\n        }\n\n        let currentNode = this;\n        while (currentNode !== null) {\n            if (value < currentNode.value) {\n                currentNode = currentNode.left;\n            } else if (value > currentNode.value) {\n                currentNode = currentNode.right;\n            } else {\n                return true;\n            }\n        }\n        return false;\n    }",
       "parameters": [
         {
           "name": "value",
