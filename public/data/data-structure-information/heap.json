@@ -1,6 +1,6 @@
 {
   "title": "Heap",
-  "description": "A heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property:\n\nHeaps must be Complete Binary Trees.\nThe nodes must be ordered according to the Heap order property. Two heap order properties are as follows:\n\nMax-Heap: In a Max-Heap the key present at the root node must be greatest among the keys present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.\nMin-Heap: In a Min-Heap the key present at the root node must be minimum among the keys present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.",
+  "description": "A heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property:\n\n - Heaps must be Complete Binary Trees.\n - The nodes must be ordered according to the Heap order property.\n\n Two heap order properties are as follows:\n\n - **Max-Heap**: In a Max-Heap the key present at the root node must be greatest among the keys present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.\n - **Min-Heap**: In a Min-Heap the key present at the root node must be minimum among the keys present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.",
   "classImplementationCode": "class Heap {\n  constructor(array,typeOfHeap = 1) {\n    this.typeOfHeap = typeOfHeap;\n    this.heap = this.buildHeap(array, typeOfHeap);\n  }\n}",
   "operations": [
     {
@@ -101,10 +101,6 @@
       "exampleCode": "",
       "dependencies": [],
       "sources": [
-        {
-          "url": "",
-          "label": ""
-        }
       ],
       "otherParameters": []
     },
@@ -168,10 +164,6 @@
       "exampleCode": "",
       "dependencies": [],
       "sources": [
-        {
-          "url": "",
-          "label": ""
-        }
       ],
       "otherParameters": []
     },
@@ -184,10 +176,6 @@
       "exampleCode": "let heap = new Heap([2, 3, 1], 1);\n let size = heap.size()",
       "dependencies": [],
       "sources": [
-        {
-          "url": "",
-          "label": ""
-        }
       ],
       "otherParameters": []
     },
@@ -200,10 +188,6 @@
       "exampleCode": "let heap = new Heap([2, 3, 1], 1); \n let isHeapEmpty = heap.isEmpty()",
       "dependencies": [],
       "sources": [
-        {
-          "url": "",
-          "label": ""
-        }
       ],
       "otherParameters": []
     }

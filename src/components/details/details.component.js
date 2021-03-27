@@ -6,6 +6,8 @@ import javascript from "highlight.js/lib/languages/javascript";
 import copy from 'copy-to-clipboard';
 import beautify from 'js-beautify';
 import CONSTANTS from '../../utils/constants';
+import marked from 'marked';
+import DOMPurify from "dompurify";
 
 import "highlight.js/styles/atom-one-light.css";
 import './details.css';
@@ -15,11 +17,15 @@ hljs.registerLanguage("javascript", javascript);
 const customId = "custom-id-toast";
 
 export default function Details() {
-  // const {allItems} = props;
-  hljs.initHighlighting.called = false;
   let query = useQuery();
   let dataStructureKey = query.get("q");
   const [details, setDetails] = useState(null);
+
+  useEffect(() => {
+    marked.setOptions({
+      gfm: true
+    });
+  }, []);
 
   useEffect(() => {
     if (!dataStructureKey) {
@@ -32,7 +38,7 @@ export default function Details() {
         if (dataStructures) {
           setDetails(dataStructures);
           setTimeout(() => {
-            hljs.initHighlighting();
+            hljs.highlightAll();
           }, 0);
         }
       }).catch(error => console.error(error));
@@ -66,7 +72,7 @@ export default function Details() {
             {
               details.description &&
               <div className="item-description">
-                <p className="primary-text">{details.description}</p>
+                <p className="primary-text" dangerouslySetInnerHTML={{ __html: details.description ? DOMPurify.sanitize(marked(details.description)) : '' }}></p>
               </div>
             }
             {
