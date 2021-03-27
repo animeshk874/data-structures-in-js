@@ -1,6 +1,6 @@
 {
   "title": "Binary Search Tree",
-  "description": "",
+  "description": "A Binary Search Tree, or BST for short, is a binary tree that makes search operations easier and faster.\n A Binary Search Tree follows these rules: \n- Each node of a BST may only have exactly 0, 1, or 2 children. \n- For each node X, all nodes in its left subtree have a value less than X.  \n- For each node X, all nodes in its right subtree have a value greater than X. \n- Both the left and right subtrees of X must also be BSTs.",
   "classImplementationCode": "class BST {\n    constructor(value) {\n    \t\tif(!value) {\n        \tthrow new Error('Please enter the root node');\n        }\n        this.value = value;\n        this.left = null;\n        this.right = null;\n    }",
   "operations": [
     {
