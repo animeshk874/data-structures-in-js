@@ -61,7 +61,7 @@ export default function Details() {
   }
 
   if (!dataStructureKey) {
-    return <MessageBox message={'No Any Data Structure Selected!'} />;
+    return <MessageBox message={'No Data Structure Selected!'} />;
   }
 
   if (isLoading) {
