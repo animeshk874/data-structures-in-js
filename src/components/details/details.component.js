@@ -93,7 +93,7 @@ export default function Details() {
             {
               details.description &&
               <div className="item-description">
-                <p className="primary-text" dangerouslySetInnerHTML={{ __html: details.description ? DOMPurify.sanitize(marked(details.description)) : '' }}></p>
+                <p className="primary-text" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(details.description)) }}></p>
               </div>
             }
             {
