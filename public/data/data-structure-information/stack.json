@@ -1,6 +1,6 @@
 {
   "title": "Stack",
-  "description": "A stack is a data structure that uses a principle called Last-In-First-Out (LIFO), meaning that the last object added to the stack must be the first object removed from it. ... Peek: Return the object at the top of the stack (without removing it). Push: Add an object passed as an argument to the top of the stack.",
+  "description": "A stack is a data structure that uses a principle called Last-In-First-Out (LIFO), meaning that the last object added to the stack must be the first object removed from it. It has two main operations: \n- Peek: Return the object at the top of the stack (without removing it). \n- Push: Add an object passed as an argument to the top of the stack.",
   "classImplementationCode": "class Stack {\n    constructor() {\n        this.stack = [];\n    }\n}\n\t",
   "operations": [
     {

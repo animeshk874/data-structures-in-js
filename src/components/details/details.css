@@ -16,6 +16,7 @@ p.primary-text {
     font-size: 28px;
     color: #689FD2;
     text-align: left;
+    margin-bottom: 30px;
 }
 
 .method-container-heading {
@@ -23,7 +24,10 @@ p.primary-text {
     color: #689FD2;
     font-size: 14px;
     font-weight: 600;
+}
 
+.method-container-heading:first-child {
+    margin-top: 0px;
 }
 
 .method-list {
