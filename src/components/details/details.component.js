@@ -20,6 +20,7 @@ export default function Details() {
   let query = useQuery();
   let dataStructureKey = query.get("q");
   const [details, setDetails] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     marked.setOptions({
@@ -32,6 +33,7 @@ export default function Details() {
       return;
     }
     setDetails(null);
+    setError(null);
     fetch(`/data/data-structure-information/${dataStructureKey}.json`)
       .then((data) => data.json())
       .then((dataStructures) => {
@@ -41,7 +43,10 @@ export default function Details() {
             hljs.highlightAll();
           }, 0);
         }
-      }).catch(error => console.error(error));
+      }).catch(error => {
+        console.error(error);
+        setError(error);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataStructureKey]);
 
@@ -57,6 +62,22 @@ export default function Details() {
     toast.dark('Copied!', {
       toastId: customId
     });
+  }
+
+  if (!dataStructureKey) {
+    return (
+      <div className="d-flex justify-content-center details-outer-container">
+        No Data Structure Selected!
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="d-flex justify-content-center details-outer-container">
+        Something Went wrong. Unable to fetch the data.
+      </div>
+    );
   }
 
   return (
@@ -123,7 +144,7 @@ export default function Details() {
                                   {
                                     operation.parameters.map((param) => {
                                       return (
-                                        <div className="d-flex justify-content-start" key={param.name}>
+                                        <div className="d-flex justify-content-start flex-wrap" key={param.name}>
                                           <div className="method-parameter-name">- {param?.name}: &nbsp;</div>
                                           <div className="method-parameter-description">{param?.description}</div>
                                         </div>
@@ -147,30 +168,35 @@ export default function Details() {
                               operation.dependencies && operation.dependencies.length ?
                                 <Fragment>
                                   <div className="method-section-title mt-4 pt-3 mb-2">Dependencies</div>
-                                  {
-                                    operation.dependencies.map((dependency, index) => {
-                                      return (
-                                        <span className="method-dependency" key={dependency}>
-                                          <a href={`#${dependency}`}>{(getDependecySignature(dependency) || {}).methodName}</a>{index === (operation.dependencies.length - 1) ? '' : <Fragment>,&nbsp;</Fragment>}
-                                        </span>
-                                      )
-                                    })
-                                  }
+                                  <div className='d-flex flex-wrap'>
+                                    {
+                                      operation.dependencies.map((dependency, index) => {
+                                        return (
+                                          <span className="method-dependency" key={dependency}>
+                                            <a href={`#${dependency}`}>{(getDependecySignature(dependency) || {}).methodName}</a>{index === (operation.dependencies.length - 1) ? '' : <Fragment>,&nbsp;</Fragment>}
+                                          </span>
+                                        )
+                                      })
+                                    }
+                                  </div>
                                 </Fragment> : <Fragment></Fragment>
                             }
                             {
                               operation.sources && operation.sources.length ?
                                 <Fragment>
                                   <div className="method-section-title mt-4 pt-3 mb-2">Sources</div>
-                                  {
-                                    operation.sources.map((source, index) => {
-                                      return (
-                                        <div className="method-source" key={index}>
-                                          - <a target="_blank" rel="noreferrer noopener" href={source.url}>{source.label || source.url}</a>
-                                        </div>
-                                      )
-                                    })
-                                  }
+
+                                  <div className='d-flex flex-wrap'>
+                                    {
+                                      operation.sources.map((source, index) => {
+                                        return (
+                                          <div className="method-source" key={index}>
+                                            - <a target="_blank" rel="noreferrer noopener" href={source.url}>{source.label || source.url}</a>
+                                          </div>
+                                        )
+                                      })
+                                    }
+                                  </div>
                                 </Fragment> : <Fragment></Fragment>
                             }
                           </div>
@@ -188,10 +214,12 @@ export default function Details() {
   );
 }
 
-function getBeautifiedCode(codeBlock){
+function getBeautifiedCode(codeBlock) {
   return beautify(codeBlock, CONSTANTS.beautifyOptions);
 }
 
 function useQuery() {
-  return new URLSearchParams(useLocation().search);
+  const { search } = useLocation();
+  if (typeof window === 'undefined') return;
+  return new URLSearchParams(search);
 }
