@@ -61,7 +61,7 @@ export default function Details() {
   if (!dataStructureKey) {
     return (
       <div className="d-flex justify-content-center details-outer-container">
-        No Any Data Structure Selected!
+        No Data Structure Selected!
       </div>
     );
   }
