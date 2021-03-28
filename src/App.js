@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import Header from './components/common/header/header.component';
 import List from './components/common/list/list.component';
 import { ToastContainer, Flip } from 'react-toastify';
+import { DataContextProvider } from './context/DataContext'
 
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -10,8 +11,10 @@ function App() {
   return (
     <Fragment>
       <div className="App">
-        <Header />
-        <List />
+        <DataContextProvider>
+          <Header />
+          <List />
+        </DataContextProvider>
       </div>
       <ToastContainer
         className="pr-2 pl-2"
@@ -26,7 +29,7 @@ function App() {
         draggable
         pauseOnHover
       />
-    </Fragment>
+    </Fragment >
   );
 }
 
