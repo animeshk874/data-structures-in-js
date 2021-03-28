@@ -1,7 +1,7 @@
 import ListItem from './list-item.component';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function TagList(props = {list: []}) {
+export default function TagList(props = { list: [] }) {
   const { list } = props;
   let query = new URLSearchParams(useLocation().search);
 
@@ -9,7 +9,7 @@ export default function TagList(props = {list: []}) {
 
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center flex-wrap">
       {list.map((item) => {
         return (
           <Link
