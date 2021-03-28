@@ -15,7 +15,7 @@ import './details.css';
 
 hljs.registerLanguage("javascript", javascript);
 
-const customId = "custom-id-toast";
+const toastId = "custom-id-toast";
 
 export default function Details() {
   const { data, dispatch } = useContext(DataContext); // const {allItems} = props;
@@ -23,11 +23,7 @@ export default function Details() {
   let query = useQuery();
   let dataStructureKey = query.get("q");
 
-  useEffect(() => {
-    marked.setOptions({
-      gfm: true
-    });
-  }, []);
+  useEffect(() => marked.setOptions({ gfm: true }), []);
 
   useEffect(() => {
     if (!dataStructureKey) return;
@@ -37,9 +33,7 @@ export default function Details() {
       .then((dataStructures) => {
         if (dataStructures) {
           dispatch({ details: dataStructures });
-          setTimeout(() => {
-            hljs.highlightAll();
-          }, 0);
+          setTimeout(() => hljs.highlightAll(), 0);
         }
       }).catch((error) => console.error(error), dispatch({ error }))
       .finally(() => dispatch({ isLoading: false }));
@@ -55,9 +49,7 @@ export default function Details() {
 
   function copyCodeBlock(text) {
     copy(text);
-    toast.dark('Copied!', {
-      toastId: customId
-    });
+    toast.dark('Copied!', { toastId });
   }
 
   if (!dataStructureKey) {
@@ -101,7 +93,7 @@ export default function Details() {
               </div>
             }
             {
-              details.operations && details.operations.length && details.operations.some((operation) => (!operation.type || operation.type === 'core') ? true : false)  ?
+              details.operations && details.operations.length && details.operations.some((operation) => (!operation.type || operation.type === 'core') ? true : false) ?
                 <div className="method-container pt-2">
                   <h4 className="method-container-heading">
                     Operations/Methods:
@@ -305,6 +297,7 @@ export default function Details() {
 function getBeautifiedCode(codeBlock) {
   return beautify(codeBlock, CONSTANTS.beautifyOptions);
 }
+
 function MessageBox({ message }) {
   return (
     <div className='d-flex justify-content-center details-outer-container'>
