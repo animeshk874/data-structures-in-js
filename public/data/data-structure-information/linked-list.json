@@ -1,69 +1,206 @@
 {
     "title": "Linked List",
-    "description": "An array is a variable that can hold more than one value at a time.",
-    "classImplementationCode": "class LinkedList {\n    //LinkedList implementation goes here\n}",
+    "description": "A linked list is a linear data structure made of a chain of nodes in which each node contains a value and a pointer to the next node in the chain.\n\nThe *head* pointer points to the first node, and the last element of the list points to null. When the list is empty, the head pointer points to null.",
+    "classImplementationCode": "class LinkedListNode {\n  constructor(nodeValue) {\n    this.value = nodeValue;\n    this.next = null;\n  }\n}\n\nclass LinkedList {\n  head = null;\n  _size = 0;\n  tail = null;\n\n  constructor(initialValue) {\n    if (initialValue === undefined) {\n      return;\n    } else if (initialValue && Array.isArray(initialValue)) {\n      initialValue.forEach(item => this.add(item));\n    } else {\n      this.add(initialValue);\n    }\n  }\n}",
     "operations": [
       {
-        "key": "fooBar",
-        "methodName": "fooBar(num)",
-        "description": "fooBar(num) takes in a number, divides it by 2, and then returns the floor of that value.",
-        "implementationCode": "fooBar(num){\n    return Math.floor(num/2);\n}",
+        "key": "add",
+        "methodName": "add(nodeValue)",
+        "description": "Takes in a value, creates a new node with that value, attaches the node to the end of the linked list, and returns the new node.",
+        "implementationCode": "add(nodeValue) {\n    let newNode = new LinkedListNode(nodeValue);\n    if (!this.head) {\n      this.head = newNode;\n      this.tail = newNode;\n    } else {\n      this.tail.next = newNode;\n      this.tail = newNode;\n    }\n    this._size++;\n    return newNode;\n  }",
         "parameters": [
           {
-            "name": "num",
-            "description": "Number to be divided by 2"
+            "name": "nodeValue",
+            "description": "Value to be added to the linked list"
           }
         ],
-        "exampleCode": "var myNum = 100;\nfooBar(myNum); // 50\n",
-        "dependencies": ["fooBaz", "fooBam"],
-        "sources": [
-          {
-            "url": "https://github.com/animeshk874/data-structures-in-js",
-            "label": "Data Structures in JS"
-          }
-        ],
-        "otherParameters": []
-      },
-      {
-        "key": "fooBaz",
-        "methodName": "fooBaz(num)",
-        "description": "fooBaz(num) takes in a number, divides it by 2, and then returns the floor of that value.",
-        "implementationCode": "fooBaz(num){\n    return Math.floor(num/2);\n}",
-        "parameters": [
-          {
-            "name": "num",
-            "description": "Number to be divided by 2"
-          }
-        ],
-        "exampleCode": "var myNum = 100;\nfooBaz(myNum); // 50\n",
-        "dependencies": ["fooBam"],
-        "sources": [
-          {
-            "url": "https://github.com/animeshk874/data-structures-in-js",
-            "label": "Data Structures in JS"
-          }
-        ],
-        "otherParameters": []
-      },
-      {
-        "key": "fooBam",
-        "methodName": "fooBam(num)",
-        "description": "fooBam(num) takes in a number, divides it by 2, and then returns the floor of that value.",
-        "implementationCode": "fooBam(num){\n    return Math.floor(num/2);\n}",
-        "parameters": [
-          {
-            "name": "num",
-            "description": "Number to be divided by 2"
-          }
-        ],
-        "exampleCode": "var myNum = 100;\nfooBam(myNum); // 50\n",
+        "exampleCode": "let linkedList = new LinkedList([1, 3, 4, 5, 7, 8]); // 1 -> 3 -> 4 -> 5 -> 7 -> 8\nlet newNode = linkedList.add(9);\nconsole.log(linkedList.printList()); // logs \"1, 3, 4, 5, 7, 8, 9\"\nconsole.log(newNode); // LinkedListNode { value: 9, next: null }",
         "dependencies": [],
         "sources": [
           {
-            "url": "https://github.com/animeshk874/data-structures-in-js",
-            "label": "Data Structures in JS"
+            "url": "https://flaviocopes.com/javascript-data-structures-linked-lists/",
+            "label": "JavaScript Data Structures: Linked lists"
           }
         ],
+        "otherParameters": []
+      },
+      {
+        "key": "insertAt",
+        "methodName": "insertAt(nodeValue, position)",
+        "description": "insertAt(nodeValue, position) takes in a nodeValue, and a position, creates a new node with the specified nodeValue, and then inserts the newly created node at the specified position. It returns the node that was created.",
+        "implementationCode": "insertAt(element, position) {\n    let {previousNode, currentNode} = this.getElementAt(position);\n    let newNode = new LinkedListNode(element);\n    if(position === 0){\n      this.head = newNode;\n      newNode.next = previousNode;\n    } else {\n      previousNode.next = newNode;\n      newNode.next = currentNode;\n    }\n    this._size++;\n    return newNode;\n  }",
+        "parameters": [
+          {
+            "name": "nodeValue",
+            "description": "Value to be inserted in the linked list"
+          },
+          {
+            "name": "position",
+            "description": "Position where to insert the new node"
+          }
+        ],
+        "exampleCode": "\nlet linkedList = new LinkedList([10, 30, 40, 50, 70, 80]); // 10 -> 30 -> 40 -> 50 -> 70 -> 80\nlet nodeOne = linkedList.insertAt(20, 1);\nconsole.log(linkedList.printList()); // \"10, 20, 30, 40, 50, 70, 80\"\nlet nodeTwo = linkedList.insertAt(60, 5);\nconsole.log(linkedList.printList()); // \"10, 20, 30, 40, 50, 60, 70, 80\"",
+        "dependencies": ["getElementAt"],
+        "sources": [
+        ],
+        "otherParameters": []
+      },
+      {
+        "key": "getElementAt",
+        "methodName": "getElementAt(position, excludeLastIndex = false)",
+        "description": "Get the node at the specified position.",
+        "implementationCode": "getElementAt(position, excludeLastIndex = false){\n    this.validatePosition(position, excludeLastIndex);\n    let count = 0;\n    let previousNode = this.head;\n    let currentNode = this.head;\n    while(count !== position){\n      previousNode = currentNode;\n      currentNode = currentNode.next;\n      count++;\n    }\n    return {previousNode, currentNode};\n  }",
+        "parameters": [
+          {
+            "name": "position",
+            "description": "Position of the node to get"
+          },
+          {
+            "name": "excludeLastIndex (optional)",
+            "description": "Flag to specify if last index is to be included or not. "
+          }
+        ],
+        "exampleCode": "let linkedList = new LinkedList([10, 30, 40, 50, 70, 80]); // 10 -> 30 -> 40 -> 50 -> 70 -> 80\nlet match = linkedList.getElementAt(2);\nconsole.log(match.currentNode); // {value: 40, next: LinkedListNode {..} }",
+        "dependencies": ["validatePosition"],
+        "sources": [
+        ],
+        "otherParameters": [
+        ]
+      },
+      {
+        "key": "removeFrom",
+        "methodName": "removeFrom(position)",
+        "description": "Remove a node from the specified position. Returns the node that was removed.",
+        "implementationCode": "removeFrom(position) {\n    let {previousNode, currentNode} = this.getElementAt(position, true);\n    this.detachNodeAt(position, currentNode, previousNode);\n    return currentNode;\n  }",
+        "parameters": [
+          {
+            "name": "position",
+            "description": "Position from where you want to remove the node"
+          }
+        ],
+        "exampleCode": "let linkedList = new LinkedList([10, 30, 40, 50, 70, 80]); // 10 -> 30 -> 40 -> 50 -> 70 -> 80\nlet removedNode = linkedList.removeFrom(2);\nconsole.log(linkedList.printList()); // 10, 30, 50, 70, 80",
+        "dependencies": ["getElementAt", "detachNodeAt"],
+        "sources": [
+        ],
+        "otherParameters": []
+      },
+      {
+        "key": "removeWhere",
+        "methodName": "removeWhere(predicate)",
+        "description": "removeWhere(predicate) takes in a function (predicate) and removes the first node where the predicate is true. Returns the node that was removed or undefined if no node was removed.",
+        "implementationCode": "removeWhere(predicate){\n    if(!predicate || typeof predicate !== 'function') {\n      throw new Error('predicate not a function');\n    }\n    let index = 0, currentNode = this.head, previousNode = this.head;\n    while(currentNode) {\n      if(predicate.call(this, currentNode.value, index, currentNode)){\n        this.detachNodeAt(index, currentNode, previousNode);\n        return currentNode;\n      }\n      index++;\n      previousNode = currentNode;\n      currentNode = currentNode.next;\n    }\n  }",
+        "parameters": [
+          {
+            "name": "predicate",
+            "description": "A function that takes in 3 params - value, index, currentNode and returns a boolean. The first node for which the return value is `true` is removed from the list."
+          }
+        ],
+        "exampleCode": "let linkedList = new LinkedList([10, 30, 40, 50, 70, 80]); // 10 -> 30 -> 40 -> 50 -> 70 -> 80\nlet removedNode = linkedList.removeWhere((value, index, currentNode) => value % 40 === 0);\nconsole.log(linkedList.printList()); // 10, 30, 50, 70, 80",
+        "dependencies": ["detachNodeAt"],
+        "sources": [
+        ],
+        "otherParameters": []
+      },
+      {
+        "key": "findWhere",
+        "methodName": "findWhere(predicate)",
+        "description": "findWhere(predicate) takes in a function (predicate) and returns the first node where the predicate is true. Returns undefined if predicate is false for each of the nodes.",
+        "implementationCode": "findWhere(predicate) {\n    if(!predicate || typeof predicate !== 'function') {\n      throw new Error('predicate not a function');\n    }\n    let index = 0, currentNode = this.head, previousNode = this.head;\n    while(currentNode) {\n      if(predicate.call(this, currentNode.value, index, currentNode)){\n        return currentNode;\n      }\n      index++;\n      previousNode = currentNode;\n      currentNode = currentNode.next;\n    }\n  }",
+        "parameters": [
+          {
+            "name": "predicate",
+            "description": "A function that takes in 3 params - value, index, currentNode and returns a boolean. The first node for which the return value is `true` is returned."
+          }
+        ],
+        "exampleCode": "let linkedList = new LinkedList([10, 30, 40, 50, 70, 80]); // 10 -> 30 -> 40 -> 50 -> 70 -> 80\nlet matchingNode = linkedList.findWhere((value, index, currentNode) => index === 1);\nconsole.log(matchingNode.value); // 30",
+        "dependencies": [],
+        "sources": [],
+        "otherParameters": []
+      },
+      {
+        "key": "find",
+        "methodName": "find(predicate)",
+        "description": "find(predicate) takes in a function (predicate) and returns all the nodes where the predicate is true. Returns an empty array if predicate is false for each of the nodes.",
+        "implementationCode": "find(predicate) {\n    if(!predicate || typeof predicate !== 'function') {\n      throw new Error('predicate not a function');\n    }\n    let index = 0, currentNode = this.head, previousNode = this.head, matchingNodes = [];\n    while(currentNode) {\n      if(predicate.call(this, currentNode.value, index, currentNode)){\n        matchingNodes.push(currentNode);\n      }\n      index++;\n      previousNode = currentNode;\n      currentNode = currentNode.next;\n    }\n    return matchingNodes;\n  }",
+        "parameters": [
+          {
+            "name": "predicate",
+            "description": "A function that takes in 3 params - value, index, currentNode and returns a boolean. All the nodes for which the return value is `true` are returned."
+          }
+        ],
+        "exampleCode": "let linkedList = new LinkedList([10, 30, 40, 50, 70, 80]); // 10 -> 30 -> 40 -> 50 -> 70 -> 80\nlet matchingNodes = linkedList.find((value, index, currentNode) => index % 2 == 0);\nconsole.log(matchingNodes[0].value); // 10\nconsole.log(matchingNodes[1].value); // 40\nconsole.log(matchingNodes[2].value); // 70",
+        "dependencies": [],
+        "sources": [],
+        "otherParameters": []
+      },
+      {
+        "key": "printList",
+        "methodName": "printList()",
+        "description": "Prints the values of all the nodes in the list.",
+        "implementationCode": "printList() {\n    let currentNode = this.head;\n    let str = \"\";\n    while (currentNode) {\n      if (currentNode.value && typeof currentNode.value == \"object\") {\n        str += `${JSON.stringify(currentNode.value)}, `;\n      } else {\n        str += `${currentNode.value}, `;\n      }\n      currentNode = currentNode.next;\n    }\n    return str.substr(0, str.length - 2);\n  }",
+        "parameters": [
+        ],
+        "exampleCode": "let linkedList = new LinkedList([10, 30, 40, 50, 70, 80]); // 10 -> 30 -> 40 -> 50 -> 70 -> 80\nconsole.log(linkedList.printList()); // 10, 30, 40, 50, 70, 80",
+        "dependencies": [],
+        "sources": [],
+        "otherParameters": []
+      },
+      {
+        "key": "size",
+        "methodName": "size()",
+        "description": "A getter method to get the size of the linked list.",
+        "implementationCode": "get size() {\n    return this._size;\n  }",
+        "parameters": [
+        ],
+        "exampleCode": "let linkedList = new LinkedList([10, 30, 40, 50, 70, 80]); // 10 -> 30 -> 40 -> 50 -> 70 -> 80\nconsole.log(linkedList.size); // 6",
+        "dependencies": [],
+        "sources": [],
+        "otherParameters": []
+      },
+      {
+        "key": "detachNodeAt",
+        "methodName": "detachNodeAt(position, currentNode, previousNode)",
+        "description": "A helper method used by removeFrom and removeWhere methods to remove nodes from the list",
+        "implementationCode": "detachNodeAt(position, currentNode, previousNode) {\n    if(position === 0){\n      this.head = currentNode.next;\n    } else {\n      previousNode.next = currentNode.next;\n    }\n    currentNode.next = null;\n    this._size--;\n  }",
+        "parameters": [
+          {
+            "name": "position",
+            "description": "Position from where to remove the node."
+          },
+          {
+            "name": "currentNode",
+            "description": "Node that is to be removed."
+          },
+          {
+            "name": "previousNode",
+            "description": "Node before the current node in the list."
+          }
+        ],
+        "exampleCode": "",
+        "dependencies": [],
+        "sources": [],
+        "type": "helper",
+        "otherParameters": []
+      },
+      {
+        "key": "validatePosition",
+        "methodName": "validatePosition(position, excludeLastIndex = false)",
+        "description": "A helper method to validate the if the position is valid.",
+        "implementationCode": "validatePosition(position, excludeLastIndex = false){\n    let positionErrorMessage = 'Invalid position for insertion. Position should be less than the size of the list and greater than 0.';\n    if(typeof position !== 'number' || (!position && position !== 0)) {\n      throw new Error(positionErrorMessage);\n    } else if(position > this.size || position < 0 || (excludeLastIndex && position === this.size)){\n      throw new Error(positionErrorMessage);\n    }\n  }",
+        "parameters": [
+          {
+            "name": "position",
+            "description": "Position that needs to be validated."
+          },
+          {
+            "name": "excludeLastIndex(options)",
+            "description": "If last index needs to be removed. Default is false."
+          }
+        ],
+        "exampleCode": "",
+        "dependencies": [],
+        "sources": [],
+        "type": "helper",
         "otherParameters": []
       }
     ]
