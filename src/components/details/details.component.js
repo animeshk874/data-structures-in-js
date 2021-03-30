@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useEffect, Fragment, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import hljs from "highlight.js/lib/core";
@@ -8,45 +8,35 @@ import beautify from 'js-beautify';
 import CONSTANTS from '../../utils/constants';
 import marked from 'marked';
 import DOMPurify from "dompurify";
+import { DataContext } from '../../context/DataContext';
 
 import "highlight.js/styles/atom-one-light.css";
 import './details.css';
 
 hljs.registerLanguage("javascript", javascript);
 
-const customId = "custom-id-toast";
+const toastId = "custom-id-toast";
 
 export default function Details() {
+  const { data, dispatch } = useContext(DataContext); // const {allItems} = props;
+  const { details, error, isLoading } = data;
   let query = useQuery();
   let dataStructureKey = query.get("q");
-  const [details, setDetails] = useState(null);
-  const [error, setError] = useState(null);
+
+  useEffect(() => marked.setOptions({ gfm: true }), []);
 
   useEffect(() => {
-    marked.setOptions({
-      gfm: true
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!dataStructureKey) {
-      return;
-    }
-    setDetails(null);
-    setError(null);
+    if (!dataStructureKey) return;
+    dispatch({ details: null, error: null, isLoading: true });
     fetch(`/data/data-structure-information/${dataStructureKey}.json`)
       .then((data) => data.json())
       .then((dataStructures) => {
         if (dataStructures) {
-          setDetails(dataStructures);
-          setTimeout(() => {
-            hljs.highlightAll();
-          }, 0);
+          dispatch({ details: dataStructures });
+          setTimeout(() => hljs.highlightAll(), 0);
         }
-      }).catch(error => {
-        console.error(error);
-        setError(error);
-      });
+      }).catch((error) => console.error(error), dispatch({ error }))
+      .finally(() => dispatch({ isLoading: false }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataStructureKey]);
 
@@ -59,27 +49,22 @@ export default function Details() {
 
   function copyCodeBlock(text) {
     copy(text);
-    toast.dark('Copied!', {
-      toastId: customId
-    });
+    toast.dark('Copied!', { toastId });
   }
 
   if (!dataStructureKey) {
-    return (
-      <div className="d-flex justify-content-center details-outer-container">
-        No Data Structure Selected!
-      </div>
-    );
+    return <MessageBox message={'No Data Structure Selected!'} />;
+  }
+
+  if (isLoading) {
+    return <MessageBox message={'Loading...'} />;
   }
 
   if (error) {
     return (
-      <div className="d-flex justify-content-center details-outer-container">
-        Something Went wrong. Unable to fetch the data.
-      </div>
+      <MessageBox message={'Something Went wrong. Unable to fetch the data.'} />
     );
   }
-
   return (
     <div className="d-flex justify-content-center details-outer-container">
       {
@@ -108,7 +93,7 @@ export default function Details() {
               </div>
             }
             {
-              details.operations && details.operations.length && details.operations.some((operation) => (!operation.type || operation.type === 'core') ? true : false)  ?
+              details.operations && details.operations.length && details.operations.some((operation) => (!operation.type || operation.type === 'core') ? true : false) ?
                 <div className="method-container pt-2">
                   <h4 className="method-container-heading">
                     Operations/Methods:
@@ -313,6 +298,13 @@ function getBeautifiedCode(codeBlock) {
   return beautify(codeBlock, CONSTANTS.beautifyOptions);
 }
 
+function MessageBox({ message }) {
+  return (
+    <div className='d-flex justify-content-center details-outer-container'>
+      <p>{message}</p>
+    </div>
+  );
+}
 function useQuery() {
   const { search } = useLocation();
   if (typeof window === 'undefined') return;

@@ -1,16 +1,21 @@
+import { useEffect, useContext } from 'react'
 import ListItem from './list-item.component';
 import { Link, useLocation } from 'react-router-dom';
+import { DataContext } from '../../../context/DataContext'
 
-export default function TagList(props = { list: [] }) {
-  const { list } = props;
+export default function TagList() {
+  const { data: { dataStructures }, dispatch } = useContext(DataContext);
   let query = new URLSearchParams(useLocation().search);
 
   const activeKey = query.get("q");
 
+  useEffect(() => {
+    dispatch({ dataStructureKey: activeKey })
+  }, [dispatch, activeKey])
 
   return (
     <div className="d-flex justify-content-center flex-wrap">
-      {list.map((item) => {
+      {dataStructures.map((item) => {
         return (
           <Link
             key={item.key}
