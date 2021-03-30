@@ -4,15 +4,16 @@ import { createContext, useReducer, useEffect } from 'react';
 export const DataContext = createContext([]);
 
 const reducer = (state, newState) => Object.assign({}, state, newState);
+const initialState = {
+  dataStructureKey: '',
+  dataStructures: [],
+  isLoading: false,
+  details: null,
+  error: null
+}
 
 export const DataContextProvider = (props) => {
-  const [data, dispatch] = useReducer(reducer, {
-    dataStructureKey: '',
-    dataStructures: [],
-    isLoading: false,
-    details: null,
-    error: null
-  })
+  const [data, dispatch] = useReducer(reducer, initialState)
   useEffect(() => {
     fetch('/data/data-structures.json')
       .then((data) => data.json())
