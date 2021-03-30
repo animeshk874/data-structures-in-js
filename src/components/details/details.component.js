@@ -19,7 +19,7 @@ const toastId = "custom-id-toast";
 
 export default function Details() {
   const { data, dispatch } = useContext(DataContext); // const {allItems} = props;
-  const { details, error, isLoading } = data;
+  const { details, isError, isLoading } = data;
   let query = useQuery();
   let dataStructureKey = query.get("q");
 
@@ -27,7 +27,7 @@ export default function Details() {
 
   useEffect(() => {
     if (!dataStructureKey) return;
-    dispatch({ details: null, error: null, isLoading: true });
+    dispatch({ details: null, isError: false, isLoading: true });
     fetch(`/data/data-structure-information/${dataStructureKey}.json`)
       .then((data) => data.json())
       .then((dataStructures) => {
@@ -35,8 +35,15 @@ export default function Details() {
           dispatch({ details: dataStructures });
           setTimeout(() => hljs.highlightAll(), 0);
         }
-      }).catch((error) => console.error(error), dispatch({ error }))
-      .finally(() => dispatch({ isLoading: false }));
+      }).catch((error) => {
+        console.error(error);
+        dispatch({ isError: true });
+      })
+      .finally(() => {
+
+        dispatch({ isLoading: false })
+        console.log({ isLoading })
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataStructureKey]);
 
@@ -55,12 +62,11 @@ export default function Details() {
   if (!dataStructureKey) {
     return <MessageBox message={'No Data Structure Selected!'} />;
   }
-
   if (isLoading) {
     return <MessageBox message={'Loading...'} />;
   }
 
-  if (error) {
+  if (isError) {
     return (
       <MessageBox message={'Something Went wrong. Unable to fetch the data.'} />
     );

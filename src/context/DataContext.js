@@ -9,7 +9,7 @@ const initialState = {
   dataStructures: [],
   isLoading: false,
   details: null,
-  error: null
+  isError: null
 }
 
 export const DataContextProvider = (props) => {
