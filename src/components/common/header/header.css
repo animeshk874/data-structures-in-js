@@ -18,3 +18,16 @@
 .search-container > input::placeholder {
   color: #999999;
 }
+
+.logo-image { 
+  height: 54px;
+}
+
+.site-name {
+  font-family: Cookie, Arial, Helvetica, sans-serif;
+  font-size: 60px;
+  line-height: 60px;
+  margin-top: 6px;
+  margin-left: 10px;
+  color: #5a5a5b;
+}
