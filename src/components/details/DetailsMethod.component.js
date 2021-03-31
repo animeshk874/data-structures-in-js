@@ -9,7 +9,7 @@ export default function DetailsMethod({ operations, title, type, fallback }) {
   let data = [];
   if (type === `core`) {
     data = operations?.filter(operation => (!operation.type || operation.type === type));
-  } else if (type === `helper`) {
+  } else {
     data = operations?.filter(operation => (operation.type === type));
   }
 
