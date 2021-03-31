@@ -13,7 +13,7 @@ dryice is an abbreviation for Don't Repeat Yourself - Instead Code Efficiently. 
 
 ## Visit dryice
 
-Open [dryice - A collection of data structures implemented in JavaScript.](https://www.frontenders.xyz) to view it in the browser.
+Open [***dryice***](https://www.frontenders.xyz) to view it in the browser.
 
 ## Available Data Structures
 
