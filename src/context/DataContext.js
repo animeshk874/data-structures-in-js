@@ -1,7 +1,7 @@
 import { createContext, useReducer, useEffect } from 'react';
 
 
-export const DataContext = createContext([]);
+export const DataContext = createContext({});
 
 const reducer = (state, newState) => Object.assign({}, state, newState);
 const initialState = {

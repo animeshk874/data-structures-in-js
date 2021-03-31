@@ -6,15 +6,18 @@ import { DataContextProvider } from './context/DataContext'
 
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import ErrorBoundary from './components/ErrorBoundry.component';
 
 function App() {
   return (
     <Fragment>
       <div className="App">
-        <DataContextProvider>
-          <Header />
-          <List />
-        </DataContextProvider>
+        <ErrorBoundary>
+          <DataContextProvider>
+            <Header />
+            <List />
+          </DataContextProvider>
+        </ErrorBoundary>
       </div>
       <ToastContainer
         className="pr-2 pl-2"
