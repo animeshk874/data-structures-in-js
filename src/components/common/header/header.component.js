@@ -1,10 +1,10 @@
 import './header.css';
 
 export default function Header() {
-    function search() {
-        console.log('Trying to search!');
-        // add debounced search
-    }
+    // function search() {
+    //     console.log('Trying to search!');
+    //     // add debounced search
+    // }
 
     return (
         <div className="m-4 d-flex justify-content-center">

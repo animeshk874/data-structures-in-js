@@ -9,7 +9,7 @@ export function getBeautifiedCode(codeBlock) {
   return beautify(codeBlock, CONSTANTS.beautifyOptions);
 }
 
-export function getDependecySignature(dependencyKey, operations) {
+export function getDependencySignature(dependencyKey, operations) {
   if (!operations) {
     return;
   }

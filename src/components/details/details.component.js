@@ -16,8 +16,9 @@ hljs.registerLanguage("javascript", javascript);
 
 export default function Details() {
   const { data, dispatch } = useContext(DataContext); // const {allItems} = props;
-  const { details, isError, isLoading } = data;
+  const { details, isError, isLoading } = data || {};
   let query = useQuery();
+
   let dataStructureKey = query.get("q");
 
   useEffect(() => marked.setOptions({ gfm: true }), []);
@@ -37,10 +38,10 @@ export default function Details() {
         dispatch({ isError: true });
       })
       .finally(() => {
-
         dispatch({ isLoading: false })
-        console.log({ isLoading })
       });
+
+    return () => dispatch({ details: null, isError: false, isLoading: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataStructureKey]);
 
@@ -67,7 +68,7 @@ export default function Details() {
             {
               details.description &&
               <div className="item-description">
-                <p className="primary-text" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(details.description)) }}></p>
+                <p className="primary-text" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(details.description || '')) }}></p>
               </div>
             }
 
