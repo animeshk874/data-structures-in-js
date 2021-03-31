@@ -9,11 +9,11 @@ export function getBeautifiedCode(codeBlock) {
   return beautify(codeBlock, CONSTANTS.beautifyOptions);
 }
 
-export function getDependecySignature(dependencyKey, details) {
-  if (!details || !details.operations) {
+export function getDependecySignature(dependencyKey, operations) {
+  if (!operations) {
     return;
   }
-  return details.operations.find((item) => item.key === dependencyKey) || {};
+  return operations.find((item) => item.key === dependencyKey) || {};
 }
 
 export function copyCodeBlock(text) {

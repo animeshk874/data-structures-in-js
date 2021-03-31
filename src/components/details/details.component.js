@@ -8,7 +8,6 @@ import { DataContext } from '../../context/DataContext';
 import DetailsMethod from './DetailsMethod.component';
 import { MessageBox } from './MessageBox.component';
 import { ImplementedCodeBlock } from './ImplementedCodeBlock.component';
-import { getBeautifiedCode } from './detailsUtil';
 
 import "highlight.js/styles/atom-one-light.css";
 import './details.css';
@@ -71,22 +70,19 @@ export default function Details() {
                 <p className="primary-text" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(details.description)) }}></p>
               </div>
             }
-            {
-              details.classImplementationCode &&
-              <ImplementedCodeBlock
-                code={getBeautifiedCode(details.classImplementationCode)}
-              />
-            }
+
+            <ImplementedCodeBlock code={details.classImplementationCode} />
+
             <DetailsMethod
               title={`Operations/Methods`}
-              details={details}
+              operations={details.operations}
               type={`core`}
               fallback={<div>No operations/methods found for this data structure.</div>}
             />
 
             <DetailsMethod
               title={`Helper methods`}
-              details={details}
+              operations={details.operations}
               type={`helper`}
               fallback={<></>}
             />

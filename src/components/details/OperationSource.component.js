@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 
 
 export function OperationSource({ sources }) {
-  if (sources && sources.length === 0) {
-    return <></>;
+  if (!sources || sources.length === 0) {
+    return null;
   }
   return (
     <Fragment>
