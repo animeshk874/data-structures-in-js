@@ -1,5 +1,4 @@
-import { copyCodeBlock } from './detailsUtil';
-import { getBeautifiedCode } from "./detailsUtil";
+import { copyCodeBlock, getBeautifiedCode } from './detailsUtil';
 
 export function ImplementedCodeBlock({ code }) {
 
