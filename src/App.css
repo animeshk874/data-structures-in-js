@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
-body {
+/* body {
   background-color: #F6FAFF !important;
-}
+} */
 
 .App {
   width: 95%;
@@ -21,7 +22,7 @@ body {
 }
 
 *:focus {
-  outline-color: #689FD2;
+  outline-color: #689fd2;
 }
 
 .Toastify__toast {

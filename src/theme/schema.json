@@ -1,0 +1,55 @@
+{
+  "data": {
+    "light": {
+      "id": "T_001",
+      "name": "Light",
+      "colors": {
+        "body": "#f6faff",
+        "text": "#9e9e9e",
+        "button": {
+          "text": "#FFFFFF",
+          "background": "#000000"
+        },
+        "link": {
+          "text": "teal",
+          "opacity": 1
+        }
+      },
+      "font": "Tinos"
+    },
+    "dark": {
+      "id": "T_007",
+      "name": "Sea Wave",
+      "colors": {
+        "body": "#000",
+        "text": "#fff",
+        "button": {
+          "text": "#ffffff",
+          "background": "#0d47a1"
+        },
+        "link": {
+          "text": "#0d47a1",
+          "opacity": 0.8
+        }
+      },
+      "font": "Ubuntu"
+    },
+    "seaWave": {
+      "id": "T_007",
+      "name": "Sea Wave",
+      "colors": {
+        "body": "#9be7ff",
+        "text": "#0d47a1",
+        "button": {
+          "text": "#ffffff",
+          "background": "#0d47a1"
+        },
+        "link": {
+          "text": "#0d47a1",
+          "opacity": 0.8
+        }
+      },
+      "font": "Ubuntu"
+    }
+  }
+}
