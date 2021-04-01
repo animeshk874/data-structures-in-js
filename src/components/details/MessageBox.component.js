@@ -1,8 +1,8 @@
-
+import { OuterContainer, PrimaryText } from './details.component'
 export function MessageBox({ message }) {
   return (
-    <div className='d-flex justify-content-center details-outer-container'>
-      <p>{message}</p>
-    </div>
+    <OuterContainer className='d-flex justify-content-center details-outer-container'>
+      <PrimaryText>{message}</PrimaryText>
+    </OuterContainer>
   );
 }

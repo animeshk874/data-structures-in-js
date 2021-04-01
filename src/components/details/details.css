@@ -1,82 +1,82 @@
 .details-outer-container {
-    width: 100%;
-    margin-top: 40px;
-    background: #fff;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.04);
-    padding: 70px 50px;
-    border-radius: 10px;
+  width: 100%;
+  margin-top: 40px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.04);
+  padding: 70px 50px;
+  border-radius: 10px;
 }
 
-p.primary-text {
-    color: #999999;
-}
+/* p.primary-text {
+  color: #999999;
+} */
 
 .item-title > h3 {
-    font-weight: 600;
-    font-size: 28px;
-    color: #689FD2;
-    text-align: left;
-    margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 28px;
+  color: #689fd2;
+  text-align: left;
+  margin-bottom: 30px;
 }
 
 .method-container-heading {
-    margin-top: 40px;
-    color: #689FD2;
-    font-size: 14px;
-    font-weight: 600;
+  margin-top: 40px;
+  color: #689fd2;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .method-container-heading:first-child {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .method-list {
-    padding-left: 20px !important;
+  padding-left: 20px !important;
 }
 
 .method-list-item {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .method-list-item:not(:last-child) {
   border-bottom: 1px solid #eee;
 }
 
-.method-list-item, .method-section-title {
-    color: #999999;
-    font-weight: 600;
-    font-size: 16px;
+.method-list-item,
+.method-section-title {
+  color: #999999;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .method-description {
-    color: #999999;
-    font-weight: 400;
+  color: #999999;
+  font-weight: 400;
 }
 
 .copy-button {
-    text-align: right;
+  text-align: right;
 }
 
 .copy-button > button {
-    background-color: #ECF6FF;
-    color: #689FD2;
-    border: none;
-    border-radius: 3px 3px 0 0;
-    font-size: 14px;
-    padding: 4px 20px;
+  background-color: #ecf6ff;
+  color: #689fd2;
+  border: none;
+  border-radius: 3px 3px 0 0;
+  font-size: 14px;
+  padding: 4px 20px;
 }
 
 .copy-button > button:focus {
-    outline: none;
+  outline: none;
 }
 
 .code-block {
-    padding: 25px !important;
-    font-weight: 400;
+  padding: 25px !important;
+  font-weight: 400;
 }
 
 .method-parameter-name {
-  color: #689FD2;
+  color: #689fd2;
 }
 
 .method-parameter-description {
@@ -84,12 +84,12 @@ p.primary-text {
   font-weight: 400;
 }
 
-.method-dependency, 
+.method-dependency,
 .method-dependency > a,
 .method-dependency > a:hover,
 .method-dependency > a:visited,
 .method-dependency > a:active {
-  color: #689FD2 !important;
+  color: #689fd2 !important;
 }
 
 .method-source,
@@ -97,5 +97,5 @@ p.primary-text {
 .method-source > a:hover,
 .method-source > a:visited,
 .method-source > a:active {
-  color: #689FD2 !important;
+  color: #689fd2 !important;
 }

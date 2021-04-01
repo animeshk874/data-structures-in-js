@@ -1,10 +1,10 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, createContext } from "react";
 import { ThemeProvider } from "styled-components";
 import { useTheme } from '../hooks/theme'
 
+export const ThemeStateProvider = createContext({})
 
 const Theme = ({ children }) => {
-  // 3: Get the selected theme, font list, etc.
   const { theme, themeLoaded } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
   useEffect(() => {
@@ -22,8 +22,10 @@ const Theme = ({ children }) => {
 
   if (themeLoaded)
     return (
-      <ThemeProvider theme={selectedTheme || {}}>
-        {children}
+      <ThemeProvider theme={selectedTheme || {}} >
+        <ThemeStateProvider.Provider value={{ selectedTheme, setSelectedTheme }}>
+          {children}
+        </ThemeStateProvider.Provider>
       </ThemeProvider>
     )
   return (

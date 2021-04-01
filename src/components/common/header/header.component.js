@@ -1,24 +1,35 @@
 import './header.css';
 import { useTheme } from '../../../hooks/theme'
 import { getFromLS } from '../../../utils/storage'
+import { useContext } from 'react';
+import { ThemeStateProvider } from '../../../context/Theme'
+import styled from 'styled-components'
 
-export default function Header() {
+export default function Header({ props }) {
     const { setMode } = useTheme()
+    const { setSelectedTheme } = useContext(ThemeStateProvider)
     // function search() {
     //     console.log('Trying to search!');
     //     // add debounced search
     // }
 
     function handleChange() {
+        const themes = getFromLS('all-themes');
         const localTheme = getFromLS('mode');
-        if (localTheme === 'dark') setMode('light');
-        else setMode('dark')
+        if (localTheme === 'dark') {
+            setMode('light');
+            setSelectedTheme(themes?.data?.['light']);
+        }
+        else {
+            setMode('dark');
+            setSelectedTheme(themes?.data?.['dark']);
+        }
     }
     return (
-        <div className="m-4 d-flex justify-content-between align-item-center">
+        <div className="m-4 d-flex justify-content-between align-items-center">
             <div className="logo-container d-flex align-items-start">
                 <img className="logo-image" src="/dry-ice.png" alt="logo" />
-                <div className="site-name">dryice</div>
+                <SiteName className="site-name">dryice</SiteName>
                 {/* <input
                     id="search"
                     type="search"
@@ -28,7 +39,7 @@ export default function Header() {
                     placeholder="Search for topics, keywords, functions..."
                 /> */}
             </div>
-            <button
+            <div
                 className=""
                 onClick={handleChange}
             >
@@ -38,7 +49,7 @@ export default function Header() {
                         width="20"
                         height="20"
                         viewBox="0 0 20 20"
-                        fill="currentColor"
+                        fill="#c2c6ca"
                     >
                         <path
                             d="M8,2 C4.5,2.9 2,6.1 2,9.9 C2,14.4 5.6,18 10.1,18 C13.9,18 17,15.5 18,12 C11.9,13.7 6.3,8.1 8,2 Z"
@@ -51,7 +62,7 @@ export default function Header() {
                         width="20"
                         height="20"
                         viewBox="0 0 20 20"
-                        fill="currentColor"
+                        fill="#525860"
                     >
                         <rect width="2" height="2" x="9" y="2"></rect>
                         <rect width="2" height="2" x="13.88" y="4.051" transform="rotate(45.02 14.88 5.051)"></rect>
@@ -61,7 +72,13 @@ export default function Header() {
                         <path d="M10,6 C7.8,6 6,7.8 6,10 C6,12.2 7.8,14 10,14 C12.2,14 14,12.2 14,10 C14,7.8 12.2,6 10,6 Z"></path>
                     </svg>
                 }
-            </button>
+            </div>
         </div>
     );
 }
+
+export const SiteName = styled.div`
+  color: ${props => {
+        return props?.theme?.colors?.logo
+    }};
+`;

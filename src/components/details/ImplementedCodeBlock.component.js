@@ -1,5 +1,6 @@
 import { copyCodeBlock, getBeautifiedCode } from './detailsUtil';
 
+import styled from 'styled-components'
 export function ImplementedCodeBlock({ code }) {
 
   const beautifiedCode = getBeautifiedCode(code);
@@ -13,8 +14,14 @@ export function ImplementedCodeBlock({ code }) {
         <button onClick={handleCopy}>Copy</button>
       </div>
       <pre>
-        <code className="javascript code-block">{beautifiedCode}</code>
+        <CodeBlockContainer className="javascript code-block">{beautifiedCode}</CodeBlockContainer>
       </pre>
     </div>
   );
 }
+
+export const CodeBlockContainer = styled.code`
+ `;
+//  background-color: ${({ theme }) => {
+//     return (theme.name === 'Dark') ? '#303742' : '#fafafa'
+//   }} !important;

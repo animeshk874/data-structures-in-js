@@ -8,6 +8,7 @@ import { DataContext } from '../../context/DataContext';
 import DetailsMethod from './DetailsMethod.component';
 import { MessageBox } from './MessageBox.component';
 import { ImplementedCodeBlock } from './ImplementedCodeBlock.component';
+import styled from "styled-components";
 
 import "highlight.js/styles/atom-one-light.css";
 import './details.css';
@@ -58,7 +59,7 @@ export default function Details() {
     );
   }
   return (
-    <div className="d-flex justify-content-center details-outer-container">
+    <OuterContainer className="d-flex justify-content-center details-outer-container">
       {
         details ? (
           <div className="details-inner-container w-100">
@@ -68,7 +69,7 @@ export default function Details() {
             {
               details.description &&
               <div className="item-description">
-                <p className="primary-text" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(details.description || '')) }}></p>
+                <PrimaryText className="primary-text" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(details.description || '')) }}></PrimaryText>
               </div>
             }
 
@@ -91,9 +92,26 @@ export default function Details() {
           </div>
         ) : <p>Loading...</p>
       }
-    </div>
+    </OuterContainer>
   );
 }
+
+export const OuterContainer = styled.div`
+  background-color: ${props => {
+    return props?.theme?.colors?.background
+  }} ;
+`;
+export const PrimaryText = styled.p`
+  color: ${props => {
+    return props?.theme?.colors?.text?.content
+  }};
+`;
+
+export const MethodSectionTitle = styled.div`
+  color: ${props => {
+    return props?.theme?.colors?.text?.content
+  }};
+`;
 
 function useQuery() {
   const { search } = useLocation();

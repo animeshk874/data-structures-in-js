@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-
+import { MethodSectionTitle } from './details.component'
 
 export function OperationSource({ sources }) {
   if (!sources || sources.length === 0) {
@@ -7,7 +7,7 @@ export function OperationSource({ sources }) {
   }
   return (
     <Fragment>
-      <div className="method-section-title mt-4 pt-3 mb-2">Sources</div>
+      <MethodSectionTitle className="method-section-title mt-4 pt-3 mb-2">Sources</MethodSectionTitle>
 
       <div className='d-flex flex-wrap'>
         {sources?.map((source, index) => (

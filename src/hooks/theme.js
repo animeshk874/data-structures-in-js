@@ -12,7 +12,8 @@ export const useTheme = () => {
     setToLS('mode', mode)
     setToLS('theme', themes?.data?.[mode])
 
-    setTheme(theme => themes?.data?.[mode]);
+    setTheme(themes?.data?.[mode]);
+    setThemeLoaded(true);
   };
 
   // const getFonts = () => {
@@ -25,7 +26,7 @@ export const useTheme = () => {
     localTheme ? setTheme(localTheme) : setTheme(themes?.data?.light);
     setThemeLoaded(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setMode]);
+  }, []);
 
   return {
     theme,

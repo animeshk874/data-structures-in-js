@@ -5,7 +5,12 @@
       "name": "Light",
       "colors": {
         "body": "#f6faff",
-        "text": "#9e9e9e",
+        "logo": "#5a5a5b",
+        "background": "#fff",
+        "text": {
+          "header": "",
+          "content": "#999999"
+        },
         "button": {
           "text": "#FFFFFF",
           "background": "#000000"
@@ -18,11 +23,16 @@
       "font": "Tinos"
     },
     "dark": {
-      "id": "T_007",
-      "name": "Sea Wave",
+      "id": "T_002",
+      "name": "Dark",
       "colors": {
-        "body": "#000",
-        "text": "#fff",
+        "logo": "#fff",
+        "body": "#18202e",
+        "text": {
+          "header": "",
+          "content": "#fff"
+        },
+        "background": "#414956",
         "button": {
           "text": "#ffffff",
           "background": "#0d47a1"
@@ -35,7 +45,7 @@
       "font": "Ubuntu"
     },
     "seaWave": {
-      "id": "T_007",
+      "id": "T_003",
       "name": "Sea Wave",
       "colors": {
         "body": "#9be7ff",
