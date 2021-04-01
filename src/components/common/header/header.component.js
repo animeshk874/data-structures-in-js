@@ -39,7 +39,7 @@ export default function Header({ props }) {
                     placeholder="Search for topics, keywords, functions..."
                 /> */}
             </div>
-            <div
+            <ThemeToggler
                 className=""
                 onClick={handleChange}
             >
@@ -72,7 +72,7 @@ export default function Header({ props }) {
                         <path d="M10,6 C7.8,6 6,7.8 6,10 C6,12.2 7.8,14 10,14 C12.2,14 14,12.2 14,10 C14,7.8 12.2,6 10,6 Z"></path>
                     </svg>
                 }
-            </div>
+            </ThemeToggler>
         </div>
     );
 }
@@ -81,4 +81,15 @@ export const SiteName = styled.div`
   color: ${props => {
         return props?.theme?.colors?.logo
     }};
+`;
+export const ThemeToggler = styled.div`
+  cursor: pointer;
+  padding: 8px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25%;
+  background-color: ${({ theme }) => {
+        return (theme.name === 'Dark') ? '#303742' : '#ecf6ff'
+    }} !important;
 `;

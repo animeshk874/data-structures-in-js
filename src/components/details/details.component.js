@@ -10,7 +10,7 @@ import { MessageBox } from './MessageBox.component';
 import { ImplementedCodeBlock } from './ImplementedCodeBlock.component';
 import styled from "styled-components";
 
-import "highlight.js/styles/atom-one-light.css";
+// import "highlight.js/styles/atom-one-light.css";
 import './details.css';
 
 hljs.registerLanguage("javascript", javascript);
