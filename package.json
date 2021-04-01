@@ -21,10 +21,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp _headers build",
+    "build": "react-scripts build && cp _headers build && npm run verify-google-search-console",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "add-structure": "node ./scripts/add-new-data-structure.js"
+    "add-structure": "node ./scripts/add-new-data-structure.js",
+    "verify-google-search-console": "node ./scripts/google-search-verification.js"
   },
   "eslintConfig": {
     "extends": [
