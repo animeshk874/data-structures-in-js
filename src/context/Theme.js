@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect, createContext } from "react";
 import { ThemeProvider } from "styled-components";
 import { useTheme } from '../hooks/theme'
+import { GlobalStyles } from '../theme/GlobalStyles'
 
 export const ThemeStateProvider = createContext({})
 
@@ -23,6 +24,7 @@ const Theme = ({ children }) => {
   if (themeLoaded)
     return (
       <ThemeProvider theme={selectedTheme || {}} >
+        <GlobalStyles />
         <ThemeStateProvider.Provider value={{ selectedTheme, setSelectedTheme }}>
           {children}
         </ThemeStateProvider.Provider>

@@ -16,14 +16,12 @@ function App() {
   return (
     <Theme>
       <Container>
-        <div className='app'>
-          <ErrorBoundary>
-            <DataContextProvider>
-              <Header />
-              <List />
-            </DataContextProvider>
-          </ErrorBoundary>
-        </div>
+        <ErrorBoundary>
+          <DataContextProvider>
+            <Header />
+            <List />
+          </DataContextProvider>
+        </ErrorBoundary>
       </Container>
       <ToastContainer
         className="pr-2 pl-2"
@@ -45,19 +43,8 @@ function App() {
 export default App;
 
 const Container = styled.div`
-  margin: 0;
-  padding: 0;
-  min-width: 100vw;
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  background-color: ${props => {
-    return props?.theme?.colors?.body
-  }} !important;
-  .app{
-    width: 95%;
-    max-width: 1400px;
-    margin: auto;
-    padding: 10px;
-  }
+  width: 95%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 10px;
 `;
