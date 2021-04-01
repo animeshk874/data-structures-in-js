@@ -9,7 +9,6 @@ import * as themes from './theme/schema.json';
 import { setToLS } from './utils/storage';
 
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
 
 function App() {
   setToLS('all-themes', themes.default);

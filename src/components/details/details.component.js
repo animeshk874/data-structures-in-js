@@ -97,6 +97,11 @@ export default function Details() {
 }
 
 export const OuterContainer = styled.div`
+  width: 100%;
+  margin-top: 40px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.04);
+  padding: 70px 50px;
+  border-radius: 10px;
   background-color: ${props => {
     return props?.theme?.colors?.background
   }} ;

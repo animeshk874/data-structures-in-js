@@ -1,4 +1,3 @@
-import './header.css';
 import { useTheme } from '../../../hooks/theme'
 import { getFromLS } from '../../../utils/storage'
 import { useContext } from 'react';
@@ -28,8 +27,8 @@ export default function Header({ props }) {
     return (
         <div className="m-4 d-flex justify-content-between align-items-center">
             <div className="logo-container d-flex align-items-start">
-                <img className="logo-image" src="/dry-ice.png" alt="logo" />
-                <SiteName className="site-name">dryice</SiteName>
+                <LogoImage src="/dry-ice.png" alt="logo" />
+                <SiteName >dryice</SiteName>
                 {/* <input
                     id="search"
                     type="search"
@@ -76,8 +75,15 @@ export default function Header({ props }) {
         </div>
     );
 }
-
+const LogoImage = styled.img`
+  height: 54px;
+`
 export const SiteName = styled.div`
+ font-family: Cookie, Arial, Helvetica, sans-serif;
+  font-size: 60px;
+  line-height: 60px;
+  margin-top: 6px;
+  margin-left: 10px;
   color: ${props => {
         return props?.theme?.colors?.logo
     }};
