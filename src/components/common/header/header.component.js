@@ -1,6 +1,5 @@
-import { useTheme } from '../../../hooks/theme'
-import { getFromLS } from '../../../utils/storage'
 import { useContext } from 'react';
+import { useTheme } from '../../../hooks/theme'
 import { ThemeStateProvider } from '../../../context/Theme'
 import styled from 'styled-components';
 import * as themes from '../../../theme/schema.json';
@@ -9,16 +8,10 @@ import * as themes from '../../../theme/schema.json';
 export default function Header({ props }) {
     const { setMode } = useTheme();
 
-    const { setSelectedTheme } = useContext(ThemeStateProvider)
-    // function search() {
-    //     console.log('Trying to search!');
-    //     // add debounced search
-    // }
-
+    const { selectedTheme, setSelectedTheme } = useContext(ThemeStateProvider)
     function handleChange() {
         const AllThemes = themes.default;
-        const localTheme = getFromLS('mode');
-        if (localTheme === 'dark') {
+        if (selectedTheme?.name === 'Dark') {
             setMode('light');
             setSelectedTheme(AllThemes?.data?.['light']);
         }
@@ -32,20 +25,10 @@ export default function Header({ props }) {
             <div className="logo-container d-flex align-items-start">
                 <LogoImage src="/dry-ice.png" alt="logo" />
                 <SiteName >dryice</SiteName>
-                {/* <input
-                    id="search"
-                    type="search"
-                    name="search"
-                    className="header-search"
-                    onKeyUp={search}
-                    placeholder="Search for topics, keywords, functions..."
-                /> */}
             </div>
-            <ThemeToggler
-                className=""
-                onClick={handleChange}
-            >
-                {(getFromLS('mode') === 'dark') ?
+
+            <ThemeToggler onClick={handleChange}>
+                {(selectedTheme?.name === 'Dark') ?
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -78,6 +61,8 @@ export default function Header({ props }) {
         </div>
     );
 }
+
+
 const LogoImage = styled.img`
   height: 54px;
 `

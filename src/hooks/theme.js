@@ -9,8 +9,6 @@ export const useTheme = () => {
 
   const setMode = mode => {
     setToLS('mode', mode)
-    setToLS('theme', Allthemes?.data?.[mode])
-
     setTheme(Allthemes?.data?.[mode]);
     setThemeLoaded(true);
   };
@@ -21,8 +19,8 @@ export const useTheme = () => {
   // }
 
   useEffect(() => {
-    const localTheme = getFromLS('theme');
-    localTheme ? setTheme(localTheme) : setTheme(themes?.data?.light);
+    const mode = getFromLS('mode');
+    mode === 'dark' ? setMode('dark') : setMode('light');
     setThemeLoaded(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

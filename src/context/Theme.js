@@ -23,12 +23,12 @@ const Theme = ({ children }) => {
 
   if (themeLoaded)
     return (
-      <ThemeProvider theme={selectedTheme || {}} >
-        <GlobalStyles />
-        <ThemeStateProvider.Provider value={{ selectedTheme, setSelectedTheme }}>
+      <ThemeStateProvider.Provider value={{ selectedTheme, setSelectedTheme }}>
+        <ThemeProvider theme={selectedTheme || {}} >
+          <GlobalStyles />
           {children}
-        </ThemeStateProvider.Provider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </ThemeStateProvider.Provider>
     )
   return (
     <Fragment>
