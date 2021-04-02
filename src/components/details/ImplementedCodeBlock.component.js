@@ -4,26 +4,37 @@ import { ReactHighlight } from './Highlight'
 import styled from 'styled-components'
 import { useContext } from 'react';
 import { ThemeStateProvider } from '../../context/Theme';
-export function ImplementedCodeBlock({ code, theme }) {
+export function ImplementedCodeBlock({ code }) {
 
   const beautifiedCode = getBeautifiedCode(code);
-  const { selectedTheme } = useContext(ThemeStateProvider)
 
   const handleCopy = () => copyCodeBlock(beautifiedCode);
-  if (!code) return null
+
+  if (!code) return null;
 
   return (
-    <div className="implementation-code-container mt-3 mb-4 position-relative">
+    <CodeBlockContainer code={code} >
       <div className="copy-button position-relative w-100">
         <CopyButton onClick={handleCopy}>Copy</CopyButton>
       </div>
+    </CodeBlockContainer>
+  );
+}
+
+export const CodeBlockContainer = ({ code, children }) => {
+  const { selectedTheme } = useContext(ThemeStateProvider)
+  const beautifiedCode = getBeautifiedCode(code);
+
+  return (
+    <div className="implementation-code-container mt-3 mb-4 position-relative">
+      {children}
       <ReactHighlight mode={selectedTheme?.name}>
         <pre>
-          <CodeBlockContainer className="javascript code-block">{beautifiedCode}</CodeBlockContainer>
+          <code className="javascript code-block">{beautifiedCode}</code>
         </pre>
       </ReactHighlight>
     </div>
-  );
+  )
 }
 
 const CopyButton = styled.button`
@@ -34,8 +45,3 @@ const CopyButton = styled.button`
     return (theme.name === 'Dark') ? '#fafafa' : '#689fd2'
   }} !important;
 `;
-export const CodeBlockContainer = styled.code`
- `;
-//  background-color: ${({ theme }) => {
-//     return (theme.name === 'Dark') ? '#303742' : '#fafafa'
-//   }} !important;
