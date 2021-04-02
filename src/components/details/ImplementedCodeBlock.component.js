@@ -39,7 +39,7 @@ export const CodeBlockContainer = ({ code, children }) => {
 
 const CopyButton = styled.button`
   background-color: ${({ theme }) => {
-    return (theme.name === 'Dark') ? '#303742' : '#ecf6ff'
+    return (theme.name === 'Dark') ? '#445168' : '#ecf6ff'
   }} !important;
   color: ${({ theme }) => {
     return (theme.name === 'Dark') ? '#fafafa' : '#689fd2'

@@ -55,4 +55,7 @@ export const LIComponent = styled.li`
   color: ${props => {
     return props?.theme?.colors?.text?.content
   }};
+  border-color: ${props => {
+    return props?.theme?.colors?.separator;
+  }} !important;
 `;

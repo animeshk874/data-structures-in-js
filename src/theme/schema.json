@@ -11,6 +11,7 @@
           "header": "",
           "content": "#999999"
         },
+        "separator": "#eee",
         "button": {
           "text": "#FFFFFF",
           "background": "#000000"
@@ -30,9 +31,10 @@
         "body": "#18202e",
         "text": {
           "header": "",
-          "content": "#fff"
+          "content": "#ddd"
         },
-        "background": "#414956",
+        "separator": "#666",
+        "background": "#363e4b",
         "button": {
           "text": "#ffffff",
           "background": "#0d47a1"
