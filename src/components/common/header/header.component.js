@@ -2,10 +2,13 @@ import { useTheme } from '../../../hooks/theme'
 import { getFromLS } from '../../../utils/storage'
 import { useContext } from 'react';
 import { ThemeStateProvider } from '../../../context/Theme'
-import styled from 'styled-components'
+import styled from 'styled-components';
+import * as themes from '../../../theme/schema.json';
+
 
 export default function Header({ props }) {
-    const { setMode } = useTheme()
+    const { setMode } = useTheme();
+
     const { setSelectedTheme } = useContext(ThemeStateProvider)
     // function search() {
     //     console.log('Trying to search!');
@@ -13,15 +16,15 @@ export default function Header({ props }) {
     // }
 
     function handleChange() {
-        const themes = getFromLS('all-themes');
+        const AllThemes = themes.default;
         const localTheme = getFromLS('mode');
         if (localTheme === 'dark') {
             setMode('light');
-            setSelectedTheme(themes?.data?.['light']);
+            setSelectedTheme(AllThemes?.data?.['light']);
         }
         else {
             setMode('dark');
-            setSelectedTheme(themes?.data?.['dark']);
+            setSelectedTheme(AllThemes?.data?.['dark']);
         }
     }
     return (

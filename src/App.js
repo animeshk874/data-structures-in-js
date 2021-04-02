@@ -5,13 +5,11 @@ import { DataContextProvider } from './context/DataContext'
 import ErrorBoundary from './components/ErrorBoundry.component';
 import Theme from "./context/Theme";
 import styled from "styled-components";
-import * as themes from './theme/schema.json';
-import { setToLS } from './utils/storage';
 
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  setToLS('all-themes', themes.default);
+
   return (
     <Theme>
       <Container>
