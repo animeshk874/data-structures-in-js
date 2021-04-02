@@ -4,6 +4,7 @@ import { ToastContainer, Flip } from 'react-toastify';
 import { DataContextProvider } from './context/DataContext'
 import ErrorBoundary from './components/ErrorBoundry.component';
 import Theme from "./context/Theme";
+import Footer from './components/common/footer/Footer.component'
 import styled from "styled-components";
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,14 +13,15 @@ function App() {
 
   return (
     <Theme>
-      <Container>
-        <ErrorBoundary>
-          <DataContextProvider>
-            <Header />
+      <DataContextProvider>
+        <Header />
+        <Container>
+          <ErrorBoundary>
             <List />
-          </DataContextProvider>
-        </ErrorBoundary>
-      </Container>
+          </ErrorBoundary>
+        </Container>
+        <Footer />
+      </DataContextProvider>
       <ToastContainer
         className="pr-2 pl-2"
         position="bottom-right"
@@ -44,4 +46,5 @@ const Container = styled.div`
   max-width: 1400px;
   margin: auto;
   padding: 10px;
+  min-height: calc(100vh - 104px - 122px);
 `;
