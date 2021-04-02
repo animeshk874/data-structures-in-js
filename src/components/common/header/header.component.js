@@ -96,6 +96,6 @@ export const ThemeToggler = styled.div`
   justify-content: center;
   border-radius: 25%;
   background-color: ${({ theme }) => {
-        return (theme.name === 'Dark') ? '#303742' : '#ecf6ff'
+        return (theme.name === 'Dark') ? '#515863' : '#c9e5ff'
     }} !important;
 `;
