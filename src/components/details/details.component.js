@@ -22,7 +22,7 @@ export default function Details() {
 
   let dataStructureKey = query.get("q");
 
-  useEffect(() => marked.setOptions({ gfm: true }), []);
+  // useEffect(() => marked.setOptions({ gfm: true }), []); // Commenting this out because of an error in browser in console
 
   useEffect(() => {
     if (!dataStructureKey) return;
