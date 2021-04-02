@@ -1,23 +1,15 @@
 import { useContext } from 'react';
-import { useTheme } from '../../../hooks/theme'
 import { ThemeStateProvider } from '../../../context/Theme'
 import styled from 'styled-components';
 
 
-export default function Header({ props }) {
-    const { Allthemes, setMode } = useTheme();
-
-    const { selectedTheme, setSelectedTheme } = useContext(ThemeStateProvider)
+export default function Header() {
+    const { selectMode, selectedTheme } = useContext(ThemeStateProvider)
     function handleChange() {
-        if (selectedTheme?.name === 'Dark') {
-            setMode('light');
-            setSelectedTheme(Allthemes?.data?.['light']);
-        }
-        else {
-            setMode('dark');
-            setSelectedTheme(Allthemes?.data?.['dark']);
-        }
+        if (selectedTheme?.name === 'Dark') selectMode('light')
+        else selectMode('dark');
     }
+
     return (
         <div className="m-4 d-flex justify-content-between align-items-center">
             <div className="logo-container d-flex align-items-start">
