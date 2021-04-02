@@ -7,12 +7,12 @@ const data = [{
   githubLink: 'https://github.com/surya76657'
 }, {
   id: 1,
-  userId: '@animeshk874',
-  githubLink: 'https://github.com/animeshk874'
-}, {
-  id: 2,
   userId: '@vikaskumr',
   githubLink: 'https://github.com/vikaskumr'
+}, {
+  id: 2,
+  userId: '@animeshk874',
+  githubLink: 'https://github.com/animeshk874'
 }]
 export default function Footer() {
   return (
@@ -32,13 +32,13 @@ export default function Footer() {
         &nbsp; by &nbsp;
         {data.map((d, index) => (
           <Fragment key={`${d.id}`}>
-            <a
+            <ProfileLink
               href={d.githubLink}
               target='_blank'
               rel="noopener noreferrer"
             >
               {d.userId}
-            </a>
+            </ProfileLink>
             {index === data.length - 2 ? ' and ' : index < data.length - 1 ? ' , ' : ' . '}
           </Fragment>
         ))}
@@ -64,15 +64,26 @@ const FooterWrapper = styled.footer`
     return (theme.name === 'Dark') ? 'rgb(40, 42, 54)' : 'rgb(239, 239, 239)'
   }} ; */
   color:  ${({ theme }) => {
-    return (theme.name === 'Dark') ? 'rgb(239, 239, 239)' : 'rgb(40, 42, 54)'
+    return (theme.name === 'Dark') ? '#ddd' : '#999'
   }} ;
   box-sizing: border-box;
   margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 95%;
+  max-width: 1400px;
 `
 
 const LayoutContent = styled.div`
   text-align: center;
   box-sizing: border-box;
-  margin-top: 30px;
   margin-bottom: 30px;
+`
+
+const ProfileLink = styled.a`
+  color: #21a1e1;
+  text-decoration: none;
+  &:hover {
+    color: #21a1e1;
+  }
 `
