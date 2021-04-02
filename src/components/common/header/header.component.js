@@ -2,22 +2,20 @@ import { useContext } from 'react';
 import { useTheme } from '../../../hooks/theme'
 import { ThemeStateProvider } from '../../../context/Theme'
 import styled from 'styled-components';
-import * as themes from '../../../theme/schema.json';
 
 
 export default function Header({ props }) {
-    const { setMode } = useTheme();
+    const { Allthemes, setMode } = useTheme();
 
     const { selectedTheme, setSelectedTheme } = useContext(ThemeStateProvider)
     function handleChange() {
-        const AllThemes = themes.default;
         if (selectedTheme?.name === 'Dark') {
             setMode('light');
-            setSelectedTheme(AllThemes?.data?.['light']);
+            setSelectedTheme(Allthemes?.data?.['light']);
         }
         else {
             setMode('dark');
-            setSelectedTheme(AllThemes?.data?.['dark']);
+            setSelectedTheme(Allthemes?.data?.['dark']);
         }
     }
     return (

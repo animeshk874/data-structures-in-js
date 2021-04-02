@@ -27,7 +27,8 @@ export const useTheme = () => {
 
   return {
     theme,
-    themeLoaded,
-    setMode
+    Allthemes,
+    setMode,
+    themeLoaded
   };
 };
