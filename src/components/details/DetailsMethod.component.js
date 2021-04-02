@@ -3,6 +3,8 @@ import { OperationDependencies } from './OperationDependencies.component';
 import { OperationSource } from './OperationSource.component';
 import { OperationParameter } from './OperationParameter.component';
 import { ExampleCode } from './ExampleCode.component';
+import { MethodSectionTitle } from './details.component';
+import styled from "styled-components";
 
 
 export default function DetailsMethod({ operations, title, type, fallback }) {
@@ -22,10 +24,10 @@ export default function DetailsMethod({ operations, title, type, fallback }) {
       <h4 className="method-container-heading">{title}: </h4>
       <ol className="method-list">
         {data?.map((operation, operationIndex) => (
-          <li key={operation.methodName} className={"method-list-item " + ((operationIndex === (operations.length - 1)) ? "" : "mb-5 pb-5")}>
+          <LIComponent key={operation.methodName} className={"method-list-item " + ((operationIndex === (operations.length - 1)) ? "" : "mb-5 pb-5")}>
             <div id={operation.key}>
-              <div className="method-section-title mt-2 mb-2">{operation?.methodName || '-'}</div>
-              {operation.description && <div className="method-description mt-2 mb-2">{operation?.description || '-'}</div>}
+              <MethodSectionTitle className="method-section-title mt-2 mb-2">{operation?.methodName || '-'}</MethodSectionTitle>
+              {operation.description && <MethodSectionDescription className="method-description mt-2 mb-2">{operation?.description || '-'}</MethodSectionDescription>}
 
               <ImplementedCodeBlock code={operation.implementationCode} />
 
@@ -37,9 +39,23 @@ export default function DetailsMethod({ operations, title, type, fallback }) {
 
               <OperationSource sources={operation.sources} />
             </div>
-          </li>
+          </LIComponent>
         ))}
       </ol>
     </div>
   );
 }
+export const MethodSectionDescription = styled.div`
+  color: ${props => {
+    return props?.theme?.colors?.text?.content
+  }};
+`;
+
+export const LIComponent = styled.li`
+  color: ${props => {
+    return props?.theme?.colors?.text?.content
+  }};
+  border-color: ${props => {
+    return props?.theme?.colors?.separator;
+  }} !important;
+`;

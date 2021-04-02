@@ -1,18 +1,16 @@
 import { Fragment } from 'react';
-import { getBeautifiedCode } from "./detailsUtil";
+import { CodeBlockContainer } from './ImplementedCodeBlock.component';
+import { MethodSectionTitle } from './details.component'
 
 export function ExampleCode({ exampleCode }) {
+
   if (!exampleCode)
     return null;
 
   return (
     <Fragment>
-      <div className="method-section-title mt-4 pt-3 mb-2">Usage</div>
-      <div className="implementation-code-container mt-3 mb-2 position-relative">
-        <pre>
-          <code className="javascript code-block">{getBeautifiedCode(exampleCode)}</code>
-        </pre>
-      </div>
+      <MethodSectionTitle className="method-section-title mt-4 pt-3 mb-2">Usage</MethodSectionTitle>
+      <CodeBlockContainer code={exampleCode} />
     </Fragment>
   );
 }

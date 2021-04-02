@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { getDependencySignature } from "./detailsUtil";
-
+import {MethodSectionTitle} from './details.component'
 
 export function OperationDependencies({ dependencies, operations }) {
   if (!dependencies || dependencies.length === 0) {
@@ -9,7 +9,7 @@ export function OperationDependencies({ dependencies, operations }) {
 
   return (
     <Fragment>
-      <div className="method-section-title mt-4 pt-3 mb-2">Dependencies</div>
+      <MethodSectionTitle className="method-section-title mt-4 pt-3 mb-2">Dependencies</MethodSectionTitle>
       <div className='d-flex flex-wrap'>
         {dependencies?.map((dependency, index) => (
           <span className="method-dependency" key={dependency}>
