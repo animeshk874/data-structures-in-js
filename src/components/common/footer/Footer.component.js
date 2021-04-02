@@ -60,9 +60,9 @@ const FooterWrapper = styled.footer`
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: ${({ theme }) => {
+  /* background-color: ${({ theme }) => {
     return (theme.name === 'Dark') ? 'rgb(40, 42, 54)' : 'rgb(239, 239, 239)'
-  }} ;
+  }} ; */
   color:  ${({ theme }) => {
     return (theme.name === 'Dark') ? 'rgb(239, 239, 239)' : 'rgb(40, 42, 54)'
   }} ;
