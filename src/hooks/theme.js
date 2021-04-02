@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'react';
 import { setToLS, getFromLS } from '../utils/storage';
-// import _ from 'lodash';
+import * as themes from '../theme/schema.json';
 
 export const useTheme = () => {
-  const themes = getFromLS('all-themes');
-  const [theme, setTheme] = useState(themes?.data?.light);
+  const Allthemes = themes.default;
+  const [theme, setTheme] = useState(Allthemes?.data?.light);
   const [themeLoaded, setThemeLoaded] = useState(false);
 
   const setMode = mode => {
-    // console.log(themes?.data?.[mode])
     setToLS('mode', mode)
-    setToLS('theme', themes?.data?.[mode])
-
-    setTheme(themes?.data?.[mode]);
+    setTheme(Allthemes?.data?.[mode]);
     setThemeLoaded(true);
   };
 
@@ -22,16 +19,16 @@ export const useTheme = () => {
   // }
 
   useEffect(() => {
-    const localTheme = getFromLS('theme');
-    localTheme ? setTheme(localTheme) : setTheme(themes?.data?.light);
+    const mode = getFromLS('mode');
+    mode === 'dark' ? setMode('dark') : setMode('light');
     setThemeLoaded(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
     theme,
-    themeLoaded,
+    Allthemes,
     setMode,
-    //  getFonts
+    themeLoaded
   };
 };
