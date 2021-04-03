@@ -15,13 +15,13 @@ function App() {
   return (
     <Theme>
       <DataContextProvider>
-        <Header />
-        <Container>
-          <ErrorBoundary>
+        <ErrorBoundary>
+          <Header />
+          <Container>
             <List />
-          </ErrorBoundary>
-        </Container>
-        <Footer />
+          </Container>
+          <Footer />
+        </ErrorBoundary>
       </DataContextProvider>
       <ToastContainer
         className="pr-2 pl-2"

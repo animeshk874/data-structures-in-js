@@ -9,16 +9,14 @@ export default function ListItem({ listItem, activeKey }) {
       })}
       tabIndex='0'
     >
-      <p key={listItem.key}> {listItem.name} </p>
+      <p> {listItem.name} </p>
     </Container>
   );
 }
 
 const Container = styled.div`
   margin: 5px;
-  background: ${({ theme }) => {
-      return theme.colors.background
-    }};
+  background: ${({ theme }) => theme.colors.background};
   padding: 6px 25px;
   border-radius: 4px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.07);
@@ -33,9 +31,7 @@ const Container = styled.div`
     margin: 0;
     font-size: 14px;
     font-weight: 600;
-    color:  ${({ theme }) => {
-      return theme.name === 'Dark' ? '#fff' : '#689fd2'
-    }};
+    color:  ${({ theme }) => theme.name === 'Dark' ? '#fff' : '#689fd2'};
     text-decoration: none!important;
     text-align: center;
   }
