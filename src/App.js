@@ -6,6 +6,7 @@ import ErrorBoundary from './components/ErrorBoundry.component';
 import Theme from "./context/Theme";
 import Footer from './components/common/footer/Footer.component'
 import styled from "styled-components";
+import './bootstrap.min.css';
 
 import 'react-toastify/dist/ReactToastify.css';
 
