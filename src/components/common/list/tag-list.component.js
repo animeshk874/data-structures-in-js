@@ -15,17 +15,15 @@ export default function TagList() {
 
   return (
     <div className="d-flex justify-content-center flex-wrap">
-      {dataStructures.map((item) => {
-        return (
-          <Link
-            key={item.key}
-            to={`/details?q=${item.key}`}
-            className="text-decoration-none"
-          >
-            <ListItem listItem={item} activeKey={activeKey} />
-          </Link>
-        );
-      })}
+      {dataStructures.map((item) => (
+        <Link
+          key={item.key}
+          to={`/details?q=${item.key}`}
+          className="text-decoration-none"
+        >
+          <ListItem listItem={item} activeKey={activeKey} />
+        </Link>
+      ))}
     </div>
   )
 }

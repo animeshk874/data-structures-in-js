@@ -9,14 +9,12 @@ export function OperationParameter({ parameters }) {
   return (
     <Fragment>
       <MethodSectionTitle className="method-section-title mt-4 pt-3 mb-2">Parameters</MethodSectionTitle>
-      {parameters?.map((param) => {
-        return (
-          <div className="d-flex justify-content-start flex-wrap" key={param.name}>
-            <div className="method-parameter-name">- {param?.name}: &nbsp;</div>
-            <MethodParamsDesc className="method-parameter-description">{param?.description}</MethodParamsDesc>
-          </div>
-        );
-      })}
+      {parameters?.map((param) => (
+        <div className="d-flex justify-content-start flex-wrap" key={param.name}>
+          <div className="method-parameter-name">- {param?.name}: &nbsp;</div>
+          <MethodParamsDesc className="method-parameter-description">{param?.description}</MethodParamsDesc>
+        </div>
+      ))}
     </Fragment>
   );
 }
