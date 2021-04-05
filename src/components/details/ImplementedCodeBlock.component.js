@@ -1,9 +1,8 @@
+import styled from 'styled-components'
 import { copyCodeBlock, getBeautifiedCode } from './detailsUtil';
 import { ReactHighlight } from './Highlight'
+import { useTheme } from '../../context/ThemeContext';
 
-import styled from 'styled-components'
-import { useContext } from 'react';
-import { ThemeStateProvider } from '../../context/Theme';
 export function ImplementedCodeBlock({ code }) {
 
   const beautifiedCode = getBeautifiedCode(code);
@@ -22,7 +21,7 @@ export function ImplementedCodeBlock({ code }) {
 }
 
 export const CodeBlockContainer = ({ code, children }) => {
-  const { selectedTheme } = useContext(ThemeStateProvider)
+  const { selectedTheme } = useTheme()
   const beautifiedCode = getBeautifiedCode(code);
 
   return (
