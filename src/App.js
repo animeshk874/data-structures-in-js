@@ -3,7 +3,7 @@ import List from './components/common/list/list.component';
 import { ToastContainer, Flip } from 'react-toastify';
 import { DataContextProvider } from './context/DataContext'
 import ErrorBoundary from './components/ErrorBoundry.component';
-import Theme from "./context/Theme";
+import ThemeContext from "./context/ThemeContext";
 import Footer from './components/common/footer/Footer.component'
 import styled from "styled-components";
 import './bootstrap.min.css';
@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
   return (
-    <Theme>
+    <ThemeContext>
       <DataContextProvider>
         <ErrorBoundary>
           <Header />
@@ -36,7 +36,7 @@ function App() {
         draggable
         pauseOnHover
       />
-    </Theme >
+    </ThemeContext >
   );
 }
 

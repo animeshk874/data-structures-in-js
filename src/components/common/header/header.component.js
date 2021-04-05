@@ -1,12 +1,13 @@
-import { useContext } from 'react';
-import { ThemeStateProvider } from '../../../context/Theme'
 import styled from 'styled-components';
 import Tippy from '@tippyjs/react';
+import { useTheme } from '../../../context/ThemeContext'
+
 import 'tippy.js/dist/tippy.css';
 
 
 export default function Header() {
-    const { selectMode, selectedTheme } = useContext(ThemeStateProvider)
+    const { selectMode, selectedTheme } = useTheme();
+
     function handleChange() {
         if (selectedTheme?.name === 'Dark') selectMode('light')
         else selectMode('dark');
