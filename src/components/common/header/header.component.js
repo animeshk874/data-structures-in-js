@@ -19,7 +19,7 @@ export default function Header() {
                 <SiteName >dryice</SiteName>
             </div>
             <div className="d-flex justify-content-center align-items-center">
-                <Tippy content="watch our youtube tutorial" touch={false}>
+                <Tippy content="Watch our Youtube tutorial" touch={false}>
                     <SVGWrapper as="a" href="https://www.youtube.com/watch?v=ZhIFuPt70dY&lc=UgwRBrL0UG3cahD7AXl4AaABAg" target="_blank">
                         <svg
                             viewBox="0 -77 512.00213 512"
