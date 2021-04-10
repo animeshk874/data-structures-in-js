@@ -14,6 +14,12 @@ Ever tried to use JS for solving problems on coding platforms? Were you also tol
 *Don't Repeat Yourself - Instead Code Efficiently*, abbreviated as [***dryice***](https://www.dryice.dev), is all that a JavaScript developer would ever need to learn DSA and solve problems on coding platforms without learning any other language. dryice is a collection of data structures implemented in JavaScript that you can use for learning DSA without leaving the comfort of your favorite language. You don't have to spend hours looking for a native JavaScript implementation for a Linked List only to solve a problem that would otherwise take less than 10 mins.
 And also, don't forget to install the [***dryice Chrome Extension***](https://chrome.google.com/webstore/detail/dryice/nnmdkginmhadcfifcaflfkidllcemhmb?utm_source=chrome-ntp-icon) for Leetcode! That for sure is going to save you a lot of time.
 
+[<img src="https://user-images.githubusercontent.com/26036974/114258361-a8969980-99e3-11eb-8277-68152e3f0cf1.png"
+     alt="dry-ice" height="70"/>](https://chrome.google.com/webstore/detail/dryice/nnmdkginmhadcfifcaflfkidllcemhmb?utm_source=chrome-ntp-icon)
+[<img src="https://user-images.githubusercontent.com/26036974/114258365-aa605d00-99e3-11eb-9d30-7235a9085676.png"
+     alt="dry-ice"
+     height="70" />](https://www.youtube.com/watch?v=ZhIFuPt70dY&lc=UgwRBrL0UG3cahD7AXl4AaABAg)
+
 ## Visit dryice
 
 Open [***dryice***](https://www.dryice.dev) to view it in the browser.
