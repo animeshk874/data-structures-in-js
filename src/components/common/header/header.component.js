@@ -24,7 +24,7 @@ export default function Header() {
                     content="Download the Dryice Chrome Extension"
                     touch={false}
                 >
-                    <SVGWrapper as="a" href="https://chrome.google.com/webstore/detail/dryice/nnmdkginmhadcfifcaflfkidllcemhmb?hl=en-GB&authuser=0" target="_blank" className="m-2">
+                    <SVGWrapper as="a" href="https://chrome.google.com/webstore/detail/dryice/nnmdkginmhadcfifcaflfkidllcemhmb?hl=en-GB&authuser=0" target="_blank" className="m-2 d-none d-md-flex">
                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                             viewBox="-70 -50 550 550" enableBackground="new 0 0 20 20" height="20px" width="20px">
                         <g>
