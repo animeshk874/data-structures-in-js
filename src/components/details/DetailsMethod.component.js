@@ -24,7 +24,7 @@ export default function DetailsMethod({ operations, title, type, fallback }) {
       <h4 className="method-container-heading">{title}: </h4>
       <ol className="method-list">
         {data?.map((operation, operationIndex) => (
-          <LIComponent key={operation.methodName} className={"method-list-item " + ((operationIndex === (operations.length - 1)) ? "" : "mb-5 pb-5")}>
+          <LIComponent key={operation.methodName} className="method-list-item mb-5 pb-5">
             <div id={operation.key}>
               <MethodSectionTitle className="method-section-title mt-2 mb-2">{operation?.methodName || '-'}</MethodSectionTitle>
               {operation.description && <MethodSectionDescription className="method-description mt-2 mb-2">{operation?.description || '-'}</MethodSectionDescription>}
