@@ -20,6 +20,27 @@ export default function Header() {
                 <SiteName >dryice</SiteName>
             </div>
             <div className="d-flex justify-content-center align-items-center">
+                <Tippy
+                    content="Download the Dryice Chrome Extension"
+                    touch={false}
+                >
+                    <SVGWrapper as="a" href="https://chrome.google.com/webstore/detail/dryice/nnmdkginmhadcfifcaflfkidllcemhmb?hl=en-GB&authuser=0" target="_blank" className="m-2">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                            viewBox="-70 -50 550 550" enableBackground="new 0 0 20 20" height="20px" width="20px">
+                        <g>
+                            <g>
+                                <path d="M394.667,213.333h-32V128c0-23.573-19.093-42.667-42.667-42.667h-85.333v-32C234.667,23.893,210.773,0,181.333,0
+                                    S128,23.893,128,53.333v32H42.667c-23.573,0-42.453,19.093-42.453,42.667l-0.107,81.067H32c31.787,0,57.6,25.813,57.6,57.6
+                                    s-25.813,57.6-57.6,57.6H0.107L0,405.333C0,428.907,19.093,448,42.667,448h81.067v-32c0-31.787,25.813-57.6,57.6-57.6
+                                    s57.6,25.813,57.6,57.6v32H320c23.573,0,42.667-19.093,42.667-42.667V320h32c29.44,0,53.333-23.893,53.333-53.333
+                                    S424.107,213.333,394.667,213.333z"
+                                    fill={(selectedTheme?.name === 'Dark') ? "#c2c6ca" : "#525860"}
+                                    />
+                            </g>
+                        </g>
+                        </svg>
+                    </SVGWrapper>
+                </Tippy>
                 <Tippy content="Watch our Youtube tutorial" touch={false}>
                     <SVGWrapper as="a" href="https://www.youtube.com/watch?v=ZhIFuPt70dY&lc=UgwRBrL0UG3cahD7AXl4AaABAg" target="_blank">
                         <svg

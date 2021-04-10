@@ -9,6 +9,7 @@ import DetailsMethod from './DetailsMethod.component';
 import { MessageBox } from './MessageBox.component';
 import { ImplementedCodeBlock } from './ImplementedCodeBlock.component';
 import styled from "styled-components";
+import ExternalLinkButtons from './ExternalLinkButtons.component';
 
 // import "highlight.js/styles/atom-one-light.css";
 import './details.css';
@@ -59,7 +60,7 @@ export default function Details() {
     );
   }
   return (
-    <OuterContainer className="d-flex justify-content-center details-outer-container">
+    <OuterContainer className="d-flex justify-content-center details-outer-container flex-wrap">
       {
         details ? (
           <div className="details-inner-container w-100">
@@ -92,6 +93,7 @@ export default function Details() {
           </div>
         ) : <p>Loading...</p>
       }
+      {details && <ExternalLinkButtons></ExternalLinkButtons>}
     </OuterContainer>
   );
 }
