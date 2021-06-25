@@ -17,9 +17,9 @@ import './details.css';
 hljs.registerLanguage("javascript", javascript);
 
 export default function Details() {
-  const { data, dispatch } = useContext(DataContext); // const {allItems} = props;
+  const { data, dispatch }:any = useContext(DataContext); // const {allItems} = props;
   const { details, isError, isLoading } = data || {};
-  let query = useQuery();
+  let query :any= useQuery();
 
   let dataStructureKey = query.get("q");
 

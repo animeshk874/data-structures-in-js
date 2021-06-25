@@ -1,11 +1,11 @@
 
 import { ErrorBoundary } from 'react-error-boundary'
 
-function ErrorFallback({ error }) {
+function ErrorFallback({ error }:any) {
   return (
     <div
       role="alert"
-      css={{
+      style={{
         color: 'red',
         height: '100vh',
         display: 'flex',
@@ -20,7 +20,7 @@ function ErrorFallback({ error }) {
   )
 }
 
-export default function ErrorBoundaryCustom({ children }) {
+export default function ErrorBoundaryCustom({ children }:any) {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       {children}

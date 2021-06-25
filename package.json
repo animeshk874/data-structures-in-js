@@ -51,7 +51,12 @@
     ]
   },
   "devDependencies": {
+    "@types/dompurify": "^2.2.2",
+    "@types/highlight.js": "^10.1.0",
+    "@types/js-beautify": "^1.13.1",
+    "@types/marked": "^2.0.3",
     "@types/react": "^17.0.11",
+    "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.10",
     "source-map-loader": "^3.0.0",
     "ts-loader": "^9.2.3",
