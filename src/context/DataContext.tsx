@@ -3,7 +3,7 @@ import { createContext, useReducer, useEffect } from 'react';
 
 export const DataContext = createContext({});
 
-const reducer = (state, newState) => Object.assign({}, state, newState);
+const reducer = (state:any, newState:any) => Object.assign({}, state, newState);
 const initialState = {
   dataStructureKey: '',
   dataStructures: [],
@@ -12,7 +12,7 @@ const initialState = {
   isError: null
 }
 
-export const DataContextProvider = (props) => {
+export const DataContextProvider: React.FC<any>  = (props) => {
   const [data, dispatch] = useReducer(reducer, initialState)
   useEffect(() => {
     fetch('/data/data-structures.json')

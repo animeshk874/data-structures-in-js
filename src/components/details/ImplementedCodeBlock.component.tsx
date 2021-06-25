@@ -3,7 +3,7 @@ import { copyCodeBlock, getBeautifiedCode } from './detailsUtil';
 import { ReactHighlight } from './Highlight'
 import { useTheme } from '../../context/ThemeContext';
 
-export function ImplementedCodeBlock({ code }) {
+export const ImplementedCodeBlock: React.FC<any> = ({ code }) => {
 
   const beautifiedCode = getBeautifiedCode(code);
 
@@ -20,8 +20,8 @@ export function ImplementedCodeBlock({ code }) {
   );
 }
 
-export const CodeBlockContainer = ({ code, children }) => {
-  const { selectedTheme } = useTheme()
+export const CodeBlockContainer: React.FC<any> = ({ code, children }) => {
+  const { selectedTheme } :any= useTheme()
   const beautifiedCode = getBeautifiedCode(code);
 
   return (

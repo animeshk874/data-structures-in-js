@@ -1,7 +1,8 @@
 import classnames from 'classnames';
+import React from 'react';
 import styled from "styled-components";
 
-export default function ListItem({ listItem, activeKey }) {
+ const ListItem: React.FC<any> = ({ listItem, activeKey }) => {
   return (
     <Container
       className={classnames({
@@ -13,8 +14,9 @@ export default function ListItem({ listItem, activeKey }) {
     </Container>
   );
 }
+export default ListItem;
 
-const Container = styled.div`
+const Container :any= styled.div`
   margin: 5px;
   background: ${({ theme }) => theme.colors.background};
   padding: 6px 25px;

@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { CodeBlockContainer } from './ImplementedCodeBlock.component';
 import { MethodSectionTitle } from './details.component'
 
-export function ExampleCode({ exampleCode }) {
+export const ExampleCode: React.FC<any>  =({ exampleCode }) =>{
 
   if (!exampleCode)
     return null;

@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import styled from "styled-components";
-import { useTheme } from '../../context/ThemeContext';
+// import { useTheme } from '../../context/ThemeContext';
 
 // import './details.css';
 
 export default function ExternalLinkButtons() {
-  const { selectMode, selectedTheme } = useTheme();
+  // const { selectMode, selectedTheme } = useTheme();
   const externalLinks = [
     {
       url: 'https://github.com/animeshk874/data-structures-in-js',
@@ -44,18 +44,14 @@ export default function ExternalLinkButtons() {
 export const Wrapper = styled.div``;
 
 const ButtonWrapper = styled.div`
-{
   background-color: ${props => {
     return props?.theme?.colors?.externalButtonBg
   }};
   border-radius: 10px;
   overflow: hidden;
   margin: 5px;
-}
 `;
 
 const ButtonImage = styled.img`
-{
   height: 60px;
-}
 `;
