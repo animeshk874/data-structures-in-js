@@ -6,8 +6,8 @@ import * as themes from '../theme/schema.json';
 
 export const ThemeProvider = createContext({})
 
-const ThemeContext = ({ children }) => {
-  const Allthemes = themes.default;
+const ThemeContext: React.FC<any> = ({ children }) => {
+  const Allthemes = (themes as any).default;
   const [selectedTheme, setSelectedTheme] = useState(Allthemes?.data?.light);
   const [themeLoaded, setThemeLoaded] = useState(false);
 
@@ -17,7 +17,7 @@ const ThemeContext = ({ children }) => {
     setThemeLoaded(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  function selectMode(mode) {
+  function selectMode(mode:string) {
     setToLS('mode', mode)
     setSelectedTheme(Allthemes?.data?.[mode]);
   }

@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { DataContext } from '../../../context/DataContext'
 
 export default function TagList() {
-  const { data: { dataStructures }, dispatch } = useContext(DataContext);
+  const { data: { dataStructures }, dispatch }:any = useContext(DataContext);
   let query = new URLSearchParams(useLocation().search);
 
   const activeKey = query.get("q");
@@ -15,7 +15,7 @@ export default function TagList() {
 
   return (
     <div className="d-flex justify-content-center flex-wrap">
-      {dataStructures.map((item) => (
+      {dataStructures.map((item:any) => (
         <Link
           key={item.key}
           to={`/details?q=${item.key}`}

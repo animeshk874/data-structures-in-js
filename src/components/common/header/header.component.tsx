@@ -6,7 +6,7 @@ import 'tippy.js/dist/tippy.css';
 
 
 export default function Header() {
-    const { selectMode, selectedTheme } = useTheme();
+    const { selectMode, selectedTheme } :any = useTheme();
 
     function handleChange() {
         if (selectedTheme?.name === 'Dark') selectMode('light')

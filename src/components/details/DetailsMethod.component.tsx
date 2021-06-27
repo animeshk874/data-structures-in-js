@@ -7,12 +7,12 @@ import { MethodSectionTitle } from './details.component';
 import styled from "styled-components";
 
 
-export default function DetailsMethod({ operations, title, type, fallback }) {
+ const DetailsMethod: React.FC<any> = ({ operations, title, type, fallback }) =>{
   let data = [];
   if (type === `core`) {
-    data = operations?.filter(operation => (!operation.type || operation.type === type));
+    data = operations?.filter((operation:any) => (!operation.type || operation.type === type));
   } else {
-    data = operations?.filter(operation => (operation.type === type));
+    data = operations?.filter((operation:any) => (operation.type === type));
   }
 
   if (!data || data.length === 0) {
@@ -23,7 +23,7 @@ export default function DetailsMethod({ operations, title, type, fallback }) {
     <div className="method-container pt-2">
       <h4 className="method-container-heading">{title}: </h4>
       <ol className="method-list">
-        {data?.map((operation, operationIndex) => (
+        {data?.map((operation:any, operationIndex: number) => (
           <LIComponent key={operation.methodName} className="method-list-item mb-5 pb-5">
             <div id={operation.key}>
               <MethodSectionTitle className="method-section-title mt-2 mb-2">{operation?.methodName || '-'}</MethodSectionTitle>
@@ -45,6 +45,7 @@ export default function DetailsMethod({ operations, title, type, fallback }) {
     </div>
   );
 }
+export default DetailsMethod;
 export const MethodSectionDescription = styled.div`
   color: ${props => {
     return props?.theme?.colors?.text?.content
